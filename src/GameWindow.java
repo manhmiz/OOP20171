@@ -49,7 +49,7 @@ public class GameWindow extends JFrame {
             }
         });
         this.setResizable(false);
-        
+
         this.canvas.setVisible(true);
         this.setVisible(true);
     }
