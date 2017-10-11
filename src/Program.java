@@ -1,6 +1,6 @@
 public class Program {
 
     public static void main(String[] args) {
-        System.out.print("Hi Ci2");
+        GameWindow gameWindow = new GameWindow();
     }
 }
