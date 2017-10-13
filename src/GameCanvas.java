@@ -12,12 +12,13 @@ public class GameCanvas extends JPanel {
     BufferedImage player;
     BufferedImage backBuffer;
     BufferedImage enemy1;
+    BufferedImage enemy2;
     Graphics backGraphics;
 
     int playerX = 182;
     int playerY = 500;
     int backgroundY = -2500;
-    int enemy1Y = -200;
+    int enemyY = -200;
     boolean rightPressed;
     boolean leftPressed;
     boolean downPressed;
@@ -32,6 +33,7 @@ public class GameCanvas extends JPanel {
             background = ImageIO.read(new File("assets/images/background/0.png"));
             player = ImageIO.read(new File("assets/images/players/straight/0.png"));
             enemy1 = ImageIO.read(new File("assets/images/enemies/level0/blue/0.png"));
+            enemy2 = ImageIO.read(new File("assets/images/enemies/level0/blue/1.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +44,8 @@ public class GameCanvas extends JPanel {
         //1.Draw everything on back buffer
         backGraphics.drawImage(background, 0, backgroundY, null);
         backGraphics.drawImage(player, playerX, playerY, null);
-        backGraphics.drawImage(enemy1, 50, enemy1Y, null);
+        backGraphics.drawImage(enemy1, 50, enemyY, null);
+        backGraphics.drawImage(enemy2,300,enemyY,null);
         //2. Call repaint
         repaint();
     }
@@ -117,7 +120,7 @@ public class GameCanvas extends JPanel {
 
         playerX += vx;
         playerY += vy;
-        enemy1Y += 5;
+        enemyY += 5;
 
 
     }
