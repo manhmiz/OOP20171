@@ -24,6 +24,7 @@ public class GameCanvas extends JPanel {
     ArrayList<EnemyBullet> bullets4 = new ArrayList<>();
 
     long lastTimeUpdate = System.nanoTime();
+    long lastTimeUpdate2 = System.nanoTime();
 
     boolean xPressed;
 
@@ -89,6 +90,7 @@ public class GameCanvas extends JPanel {
 
     public void runbullet() {
         long currentTime = System.nanoTime();
+        long currentTime2 = System.nanoTime();
         if (currentTime - lastTimeUpdate >= 170000000) {
             if (xPressed) {
                 PlayerSpell newSpell = new PlayerSpell();
@@ -96,6 +98,10 @@ public class GameCanvas extends JPanel {
                 newSpell.y = player.y;
                 spells.add(newSpell);
             }
+
+            lastTimeUpdate = currentTime;
+        }
+        if(currentTime2 - lastTimeUpdate2 >= 680000000){
             EnemyBullet newBullet1 = new EnemyBullet();
             newBullet1.x = enemy.x1;
             newBullet1.y = enemy.y1;
@@ -115,8 +121,7 @@ public class GameCanvas extends JPanel {
             newBullet4.x = enemy.x4;
             newBullet4.y = enemy.y2;
             bullets4.add(newBullet4);
-
-            lastTimeUpdate = currentTime;
+            lastTimeUpdate2 = currentTime2;
         }
         for (PlayerSpell spell : spells) {
             spell.run();
