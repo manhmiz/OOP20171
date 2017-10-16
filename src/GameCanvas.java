@@ -1,4 +1,5 @@
 import touhou.BackGround;
+import touhou.Enemy;
 import touhou.Player;
 import touhou.PlayerSpell;
 
@@ -18,6 +19,7 @@ public class GameCanvas extends JPanel {
 
     BackGround backGround = new BackGround();
     Player player = new Player();
+    Enemy enemy = new Enemy();
     ArrayList<PlayerSpell> spells = new ArrayList<>();
 
     boolean xPressed;
@@ -34,9 +36,11 @@ public class GameCanvas extends JPanel {
         //1.Draw everything on back buffer
         backGround.render(backGraphics);
         player.render(backGraphics);
+        enemy.render(backGraphics);
         for (PlayerSpell spell:spells){
             spell.render(backGraphics);
         }
+
         //2. Call repaint
         repaint();
     }
@@ -64,6 +68,7 @@ public class GameCanvas extends JPanel {
     public void run() {
         player.run();
         backGround.run();
+        enemy.run();
         if (xPressed){
             PlayerSpell newSpell = new PlayerSpell();
             newSpell.x = player.x;
