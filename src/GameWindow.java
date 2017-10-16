@@ -66,6 +66,7 @@ public class GameWindow extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
+
                 canvas.keyReleased(e);
             }
         });

@@ -11,18 +11,23 @@ public class GameCanvas extends JPanel {
     BufferedImage background;
     BufferedImage player;
     BufferedImage backBuffer;
-    BufferedImage enemy1;
-    BufferedImage enemy2;
     Graphics backGraphics;
 
     int playerX = 182;
     int playerY = 500;
     int backgroundY = -2500;
-    int enemyY = -200;
+
     boolean rightPressed;
     boolean leftPressed;
     boolean downPressed;
     boolean upPressed;
+
+    final int SPEED = 5;
+    final int LEFT = 0;
+    final int RIGHT = 350;
+    final int TOP = 0;
+    final int BOTTOM = 530;
+
 
     public GameCanvas() {
         //1. Create back buffer
@@ -32,8 +37,6 @@ public class GameCanvas extends JPanel {
         try {
             background = ImageIO.read(new File("assets/images/background/0.png"));
             player = ImageIO.read(new File("assets/images/players/straight/0.png"));
-            enemy1 = ImageIO.read(new File("assets/images/enemies/level0/blue/0.png"));
-            enemy2 = ImageIO.read(new File("assets/images/enemies/level0/blue/1.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,8 +47,6 @@ public class GameCanvas extends JPanel {
         //1.Draw everything on back buffer
         backGraphics.drawImage(background, 0, backgroundY, null);
         backGraphics.drawImage(player, playerX, playerY, null);
-        backGraphics.drawImage(enemy1, 50, enemyY, null);
-        backGraphics.drawImage(enemy2,300,enemyY,null);
         //2. Call repaint
         repaint();
     }
@@ -92,36 +93,32 @@ public class GameCanvas extends JPanel {
         int vy = 0;
 
         if (rightPressed) {
-            if (playerX < 350) {
-                vx += 5;
-            }
+                vx += SPEED;
         }
         if (leftPressed) {
-            if (playerX > 0) {
-                vx -= 5;
-            }
+                vx -= SPEED;
         }
         if (upPressed) {
-            if (playerY > 0) {
-                vy -= 5;
-            }
+                vy -= SPEED;
         }
         if (downPressed) {
-            if (playerY < 524) {
-                vy += 5;
-            }
-        }
-
-        if (backgroundY == 0) {
-            backgroundY -= 2510;
-        } else {
-            backgroundY += 10;
+                vy += SPEED;
         }
 
         playerX += vx;
         playerY += vy;
-        enemyY += 5;
 
+        playerX = (int)clamp(playerX, LEFT, RIGHT);
+        playerY = (int)clamp(playerY, TOP, BOTTOM);
 
+    }
+    private float clamp(float value, float min, float max){
+        if (value < min){
+            return min;
+        }
+        if (value > max){
+            return max;
+        }
+        return value;
     }
 }
