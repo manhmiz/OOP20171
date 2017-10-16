@@ -23,11 +23,12 @@ public class Player {
     final int TOP = 0;
     final int BOTTOM = 530;
 
-    public Player(){
+    public Player() {
         image = Utils.loadImage("assets/images/players/straight/0.png");
     }
-    public void render(Graphics graphics){
-        graphics.drawImage(image,x,y,null);
+
+    public void render(Graphics graphics) {
+        graphics.drawImage(image, x, y, null);
     }
 
     public void keyPressed(KeyEvent e) {
@@ -82,15 +83,16 @@ public class Player {
         x += vx;
         y += vy;
 
-        x = (int)clamp(x, LEFT, RIGHT);
-        y = (int)clamp(y, TOP, BOTTOM);
+        x = (int) clamp(x, LEFT, RIGHT);
+        y = (int) clamp(y, TOP, BOTTOM);
 
     }
-    private float clamp(float value, float min, float max){
-        if (value < min){
+
+    private float clamp(float value, float min, float max) {
+        if (value < min) {
             return min;
         }
-        if (value > max){
+        if (value > max) {
             return max;
         }
         return value;

@@ -18,7 +18,8 @@ public class PlayerSpell {
     public void render(Graphics backGraphics) {
         backGraphics.drawImage(image, x, y, null);
     }
-    public void run(){
+
+    public void run() {
         y -= SPEED;
     }
 }

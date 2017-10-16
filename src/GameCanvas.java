@@ -85,10 +85,9 @@ public class GameCanvas extends JPanel {
         player.run();
         backGround.run();
         enemy.run();
-
     }
 
-    public void runbullet() {
+    public void runBullet() {
         long currentTime = System.nanoTime();
         long currentTime2 = System.nanoTime();
         if (currentTime - lastTimeUpdate >= 170000000) {
@@ -101,7 +100,7 @@ public class GameCanvas extends JPanel {
 
             lastTimeUpdate = currentTime;
         }
-        if(currentTime2 - lastTimeUpdate2 >= 680000000){
+        if (currentTime2 - lastTimeUpdate2 >= 680000000) {
             EnemyBullet newBullet1 = new EnemyBullet();
             newBullet1.x = enemy.x1;
             newBullet1.y = enemy.y1;

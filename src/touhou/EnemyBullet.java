@@ -14,16 +14,15 @@ public class EnemyBullet {
     final int SPEED = 3;
 
 
-
-
-
-    public EnemyBullet(){
+    public EnemyBullet() {
         image = Utils.loadImage("assets/images/enemies/bullets/blue.png");
     }
-    public void render(Graphics graphics){
-        graphics.drawImage(image, x,y,null);
+
+    public void render(Graphics graphics) {
+        graphics.drawImage(image, x, y, null);
     }
-    public void run(){
+
+    public void run() {
         y += SPEED;
     }
 

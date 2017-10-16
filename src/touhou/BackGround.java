@@ -23,7 +23,7 @@ public class BackGround {
 
     public void run() {
         y += 10;
-        y = (int)clamp(y, BOTTOM, TOP);
+        y = (int) clamp(y, BOTTOM, TOP);
     }
 
     private float clamp(float value, float min, float max) {
