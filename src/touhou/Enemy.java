@@ -35,12 +35,14 @@ public class Enemy {
         }
         if (y1 == yTurn && y2 != yTurn){
             y2 += SPEED;
-            x1 -= SPEED;
-            x2 += SPEED;
+            x1 += SPEED;
+            x2 -= SPEED;
         }
         if (y2 == yTurn){
-            x3 -=SPEED;
-            x4 +=SPEED;
+            x1 += SPEED;
+            x2 -= SPEED;
+            x3 +=SPEED;
+            x4 -=SPEED;
         }
     }
 }
