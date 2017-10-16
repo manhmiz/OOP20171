@@ -23,8 +23,9 @@ public class GameCanvas extends JPanel {
     ArrayList<EnemyBullet> bullets3 = new ArrayList<>();
     ArrayList<EnemyBullet> bullets4 = new ArrayList<>();
 
-    boolean xPressed;
+    long lastTimeUpdate = System.nanoTime();
 
+    boolean xPressed;
 
 
     public GameCanvas() {
@@ -39,20 +40,20 @@ public class GameCanvas extends JPanel {
         player.render(backGraphics);
         enemy.render(backGraphics);
 
-        for (PlayerSpell spell:spells){
+        for (PlayerSpell spell : spells) {
             spell.render(backGraphics);
         }
 
-        for (EnemyBullet bullet:bullets1){
+        for (EnemyBullet bullet : bullets1) {
             bullet.render(backGraphics);
         }
-        for (EnemyBullet bullet:bullets2){
+        for (EnemyBullet bullet : bullets2) {
             bullet.render(backGraphics);
         }
-        for (EnemyBullet bullet:bullets3){
+        for (EnemyBullet bullet : bullets3) {
             bullet.render(backGraphics);
         }
-        for (EnemyBullet bullet:bullets4){
+        for (EnemyBullet bullet : bullets4) {
             bullet.render(backGraphics);
         }
         //2. Call repaint
@@ -66,7 +67,7 @@ public class GameCanvas extends JPanel {
 
     public void keyPressed(KeyEvent e) {
         player.keyPressed(e);
-        if (e.getKeyCode() == KeyEvent.VK_X){
+        if (e.getKeyCode() == KeyEvent.VK_X) {
             xPressed = true;
         }
 
@@ -74,7 +75,7 @@ public class GameCanvas extends JPanel {
 
     public void keyReleased(KeyEvent e) {
         player.keyReleased(e);
-        if (e.getKeyCode() == KeyEvent.VK_X){
+        if (e.getKeyCode() == KeyEvent.VK_X) {
             xPressed = false;
         }
     }
@@ -83,44 +84,55 @@ public class GameCanvas extends JPanel {
         player.run();
         backGround.run();
         enemy.run();
-        if (xPressed){
-            PlayerSpell newSpell = new PlayerSpell();
-            newSpell.x = player.x;
-            newSpell.y = player.y;
-            spells.add(newSpell );
-        }
-        for (PlayerSpell spell:spells){
-            spell.run();
-        }
-        EnemyBullet newBullet1 = new EnemyBullet();
-        newBullet1.x = enemy.x1;
-        newBullet1.y = enemy.y1;
-        bullets1.add(newBullet1);
-        for (EnemyBullet bullet:bullets1){
-            bullet.run();
-        }
-        EnemyBullet newBullet2 = new EnemyBullet();
+
+    }
+
+    public void runbullet() {
+        long currentTime = System.nanoTime();
+        if (currentTime - lastTimeUpdate >= 170000000) {
+            if (xPressed) {
+                PlayerSpell newSpell = new PlayerSpell();
+                newSpell.x = player.x;
+                newSpell.y = player.y;
+                spells.add(newSpell);
+            }
+            EnemyBullet newBullet1 = new EnemyBullet();
+            newBullet1.x = enemy.x1;
+            newBullet1.y = enemy.y1;
+            bullets1.add(newBullet1);
+
+            EnemyBullet newBullet2 = new EnemyBullet();
             newBullet2.x = enemy.x2;
             newBullet2.y = enemy.y1;
-        bullets2.add(newBullet2);
-        for (EnemyBullet bullet:bullets2) {
+            bullets2.add(newBullet2);
+
+            EnemyBullet newBullet3 = new EnemyBullet();
+            newBullet3.x = enemy.x3;
+            newBullet3.y = enemy.y2;
+            bullets3.add(newBullet3);
+
+            EnemyBullet newBullet4 = new EnemyBullet();
+            newBullet4.x = enemy.x4;
+            newBullet4.y = enemy.y2;
+            bullets4.add(newBullet4);
+
+            lastTimeUpdate = currentTime;
+        }
+        for (PlayerSpell spell : spells) {
+            spell.run();
+        }
+        for (EnemyBullet bullet : bullets4) {
             bullet.run();
         }
-        EnemyBullet newBullet3 = new EnemyBullet();
-        newBullet3.x = enemy.x3;
-        newBullet3.y = enemy.y2;
-        bullets3.add(newBullet3);
-        for (EnemyBullet bullet:bullets3){
+        for (EnemyBullet bullet : bullets3) {
             bullet.run();
         }
-        EnemyBullet newBullet4 = new EnemyBullet();
-        newBullet4.x = enemy.x4;
-        newBullet4.y = enemy.y2;
-        bullets4.add(newBullet4);
-        for (EnemyBullet bullet:bullets4){
+        for (EnemyBullet bullet : bullets2) {
+            bullet.run();
+        }
+        for (EnemyBullet bullet : bullets1) {
             bullet.run();
         }
     }
-
 
 }
