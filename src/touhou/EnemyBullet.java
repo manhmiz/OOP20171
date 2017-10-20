@@ -1,16 +1,15 @@
 package touhou;
 
+import bases.GameObject;
 import bases.Utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class EnemyBullet {
-    BufferedImage image;
+public class EnemyBullet extends GameObject{
 
-    public int x;
-    public int y;
+
     final int SPEED = 3;
 
 
@@ -18,9 +17,6 @@ public class EnemyBullet {
         image = Utils.loadImage("assets/images/enemies/bullets/blue.png");
     }
 
-    public void render(Graphics graphics) {
-        graphics.drawImage(image, x, y, null);
-    }
 
     public void run() {
         y += SPEED;

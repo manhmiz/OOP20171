@@ -1,16 +1,14 @@
 package touhou;
 
+import bases.GameObject;
 import bases.Utils;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
-public class Player {
-    BufferedImage image;
-
-    public int x = 182;
-    public int y = 500;
+public class Player extends GameObject{
 
     boolean rightPressed;
     boolean leftPressed;
@@ -22,14 +20,19 @@ public class Player {
     final int RIGHT = 350;
     final int TOP = 0;
     final int BOTTOM = 530;
+    boolean xPressed;
+
+
+    boolean spellDisabled;
+     final int COOL_DOWN_TIME = 5;
+
 
     public Player() {
+        x = 182;
+        y = 500;
         image = Utils.loadImage("assets/images/players/straight/0.png");
     }
 
-    public void render(Graphics graphics) {
-        graphics.drawImage(image, x, y, null);
-    }
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -44,7 +47,9 @@ public class Player {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             downPressed = true;
         }
-
+        if (e.getKeyCode() == KeyEvent.VK_X) {
+            xPressed = true;
+        }
     }
 
     public void keyReleased(KeyEvent e) {
@@ -60,10 +65,17 @@ public class Player {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             downPressed = false;
         }
+        if (e.getKeyCode() == KeyEvent.VK_X) {
+            xPressed = false;
+        }
     }
 
     public void run() {
+        move();
+        shoot();
+    }
 
+    private void move() {
         int vx = 0;
         int vy = 0;
 
@@ -85,7 +97,27 @@ public class Player {
 
         x = (int) clamp(x, LEFT, RIGHT);
         y = (int) clamp(y, TOP, BOTTOM);
+    }
 
+    int coolDownCount;
+
+
+    public void shoot(){
+        if ( spellDisabled){
+            coolDownCount++;
+            if (coolDownCount >= COOL_DOWN_TIME){
+                spellDisabled = false;
+                coolDownCount = 0;
+            }
+            return;
+        }
+        if (xPressed){
+            PlayerSpell newSpell = new PlayerSpell();
+            newSpell.x = x;
+            newSpell.y = y;
+            GameObject.add(newSpell);
+            spellDisabled = true;
+        }
     }
 
     private float clamp(float value, float min, float max) {

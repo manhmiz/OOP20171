@@ -83,7 +83,6 @@ public class GameWindow extends JFrame {
             if (currentTime - lastTimeUpdate >= 17000000) {
                 canvas.run();
                 canvas.render();
-                canvas.runBullet();
                 lastTimeUpdate = currentTime;
 
             }
