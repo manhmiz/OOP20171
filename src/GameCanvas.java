@@ -18,7 +18,6 @@ public class GameCanvas extends JPanel {
     BackGround backGround = new BackGround();
     Player player = new Player();
     Enemy enemy = new Enemy();
-    EnemyBullet bullet = new EnemyBullet();
 
 
 
@@ -29,7 +28,6 @@ public class GameCanvas extends JPanel {
         GameObject.add(backGround);
         GameObject.add(player);
         GameObject.add(enemy);
-        GameObject.add(bullet);
     }
 
     public void render() {
