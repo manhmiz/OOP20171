@@ -27,9 +27,9 @@ public class Vector2d {
         return new Vector2d(this.x, this.y);
     }
 
-    public Vector2d addUP(Vector2d v3) {
-        this.x += v3.x;
-        this.y += v3.y;
+    public Vector2d addUP(Vector2d v) {
+        this.x += v.x;
+        this.y += v.y;
         return this;
     }
 
@@ -39,10 +39,10 @@ public class Vector2d {
         return this;
     }
 
-    public Vector2d add(Vector2d v4) {
+    public Vector2d add(Vector2d v) {
         Vector2d result = new Vector2d(x, y);
-        result.x += v4.x;
-        result.y += v4.y;
+        result.x += v.x;
+        result.y += v.y;
         return result;
     }
 
@@ -53,9 +53,9 @@ public class Vector2d {
         return result;
     }
 
-    public Vector2d subtractBy(Vector2d v5) {
-        this.x -= v5.x;
-        this.y -= v5.y;
+    public Vector2d subtractBy(Vector2d v) {
+        this.x -= v.x;
+        this.y -= v.y;
         return this;
     }
 
@@ -79,12 +79,24 @@ public class Vector2d {
         return result;
     }
 
+    public Vector2d multiply(float factor) {
+        Vector2d result = new Vector2d();
+        result.x = this.x * factor;
+        result.y = this.y * factor;
+        return result;
+    }
+
     public static void main(String[] args) {
         Vector2d v = new Vector2d();
         Vector2d v2 = new Vector2d(1, 5);
-        v.addUP(v2);
+        Vector2d v3 = new Vector2d();
+        Vector2d v4 = v.clone().subtract(v2);
+        Vector2d v5 = v2.clone().multiply(2);
         System.out.println(v);
         System.out.println(v2);
+        System.out.println(v3);
+        System.out.println(v4);
+        System.out.println(v5);
     }
 }
 
