@@ -1,4 +1,4 @@
-package touhou;
+package touhou.players;
 
 import bases.GameObject;
 import bases.Utils;
@@ -17,6 +17,6 @@ public class PlayerSpell extends GameObject{
 
 
     public void run() {
-        y -= SPEED;
+        position.y -= SPEED;
     }
 }

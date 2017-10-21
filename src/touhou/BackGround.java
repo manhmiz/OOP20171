@@ -6,19 +6,25 @@ import bases.Utils;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class BackGround extends GameObject{
+public class BackGround {
+    BufferedImage image;
+    int x;
+    int y = -2500;
 
     final int TOP = 0;
     final int BOTTOM = -2500;
+    final int SPEED = 10;
 
     public BackGround() {
-        y = -2600;
+
         image = Utils.loadImage("assets/images/background/0.png");
     }
 
-
+    public void render(Graphics graphics){
+        graphics.drawImage(image,x,y,null);
+    }
     public void run() {
-        y += 10;
+        y += SPEED;
         y = (int) clamp(y, BOTTOM, TOP);
     }
 

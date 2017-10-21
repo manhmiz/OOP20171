@@ -22,6 +22,14 @@ public class Vector2d {
         this.x = x;
         this.y = y;
     }
+    public void set(float x, float y){
+        this.x = x;
+        this.y = y;
+    }
+    public void set(Vector2d v){
+        this.x = v.x;
+        this.y = v.y;
+    }
 
     public Vector2d clone() {
         return new Vector2d(this.x, this.y);
@@ -85,18 +93,13 @@ public class Vector2d {
         result.y = this.y * factor;
         return result;
     }
-
-    public static void main(String[] args) {
-        Vector2d v = new Vector2d();
-        Vector2d v2 = new Vector2d(1, 5);
-        Vector2d v3 = new Vector2d();
-        Vector2d v4 = v.clone().subtract(v2);
-        Vector2d v5 = v2.clone().multiply(2);
-        System.out.println(v);
-        System.out.println(v2);
-        System.out.println(v3);
-        System.out.println(v4);
-        System.out.println(v5);
+    public float length(){
+        return (float)Math.sqrt(x*x + y*y);
     }
+    public Vector2d normalie(){
+        float length = length();
+        return new Vector2d(this.x / length, this.y / length);
+    }
+
 }
 

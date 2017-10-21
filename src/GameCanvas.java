@@ -1,14 +1,13 @@
 import bases.GameObject;
+import touhou.enemies.Enemy;
+import touhou.enemies.EnemySpawner;
+import touhou.players.Player;
 import touhou.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class GameCanvas extends JPanel {
 
@@ -17,7 +16,6 @@ public class GameCanvas extends JPanel {
 
     BackGround backGround = new BackGround();
     Player player = new Player();
-    Enemy enemy = new Enemy();
 
 
 
@@ -25,14 +23,13 @@ public class GameCanvas extends JPanel {
         //1. Create back buffer
         backBuffer = new BufferedImage(384, 600, BufferedImage.TYPE_INT_ARGB);
         backGraphics = backBuffer.getGraphics();
-        GameObject.add(backGround);
         GameObject.add(player);
-        GameObject.add(enemy);
+        GameObject.add(new EnemySpawner());
     }
 
     public void render() {
         //1.Draw everything on back buffer
-
+        backGround.render(backGraphics);
         GameObject.renderAll(backGraphics);
 
         //2. Call repaint
@@ -57,6 +54,7 @@ public class GameCanvas extends JPanel {
 
     public void run() {
         GameObject.runAll();
+        backGround.run();
     }
 
 }

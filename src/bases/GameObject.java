@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 public class GameObject {
-    public float x;
-    public float y;
+    public Vector2d position;
+
     public BufferedImage image;
 
     static Vector<GameObject> gameObjects = new Vector<>();
@@ -30,6 +30,7 @@ public class GameObject {
     }
 
     public GameObject(){
+        position = new Vector2d();
 
     }
 
@@ -38,7 +39,10 @@ public class GameObject {
 
     public void render(Graphics graphics){
         if (image != null){
-            graphics.drawImage(image,(int)x,(int)y,null);
+            graphics.drawImage(image,
+                    (int)(position.x - image.getWidth()/2),
+                    (int)(position.y - image.getHeight()/2),
+                    null);
         }
     }
 
