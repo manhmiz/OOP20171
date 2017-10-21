@@ -2,9 +2,12 @@ package touhou.enemies;
 
 import bases.GameObject;
 import bases.Utils;
+import bases.physics.BoxCollider;
 import touhou.enemies.EnemyBullet;
 
 public class Enemy extends GameObject {
+
+    public BoxCollider boxCollider;
 
     final int yTurn = 200;
     final int SPEED = 2;
@@ -14,13 +17,14 @@ public class Enemy extends GameObject {
     int coolDownTime;
 
     public Enemy() {
-
+        boxCollider = new BoxCollider(30,30);
         this.image = Utils.loadImage("assets/images/enemies/level0/blue/0.png");
     }
 
 
     public void run() {
         position.addUP(0, SPEED);
+        boxCollider.position.set(this.position);
         shoot();
 //        move();
     }
@@ -47,5 +51,9 @@ public class Enemy extends GameObject {
         bulletDisabled = true;
 
 
+    }
+
+    public void getHit() {
+        isActive = false;
     }
 }
