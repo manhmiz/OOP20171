@@ -24,10 +24,11 @@ public class PlayerSpell extends GameObject{
     public void run() {
         this.position.subtractBy(0,SPEED);
         boxCollider.position.set(this.position);
-        Enemy enemy = GameObject.collideWidth(this.boxCollider);
+        Enemy enemy = GameObject.collideWith(this.boxCollider);
         if (enemy != null){
             enemy.getHit();
             this.isActive = false;
         }
     }
+
 }

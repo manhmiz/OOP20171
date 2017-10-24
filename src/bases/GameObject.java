@@ -3,6 +3,7 @@ package bases;
 import bases.physics.BoxCollider;
 import sun.nio.cs.ext.DoubleByte;
 import touhou.enemies.Enemy;
+import touhou.players.Player;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -37,16 +38,27 @@ public class GameObject {
         newgameObjects.add(gameObject);
     }
 
-    public static Enemy collideWidth(BoxCollider boxCollider) {
+    public static Enemy collideWith(BoxCollider boxCollider) {
         for (GameObject gameObject : gameObjects) {
             if (gameObject.isActive && gameObject instanceof Enemy) {
                 Enemy enemy = (Enemy) gameObject;
-                if (enemy.boxCollider.collieWidth(boxCollider)) {
+                if (enemy.boxCollider.collieWith(boxCollider)) {
                     return enemy;
                 }
             }
         }
 
+        return null;
+    }
+    public static Player collideWith2(BoxCollider boxCollider){
+        for (GameObject gameObject : gameObjects){
+            if (gameObject.isActive && gameObject instanceof Player){
+                Player player = (Player) gameObject;
+                if (player.boxCollider.collieWith(boxCollider)){
+                    return player;
+                }
+            }
+        }
         return null;
     }
 

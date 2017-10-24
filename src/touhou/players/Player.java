@@ -3,11 +3,12 @@ package touhou.players;
 import bases.GameObject;
 import bases.Utils;
 import bases.Vector2d;
+import bases.physics.BoxCollider;
 import touhou.players.PlayerSpell;
 
 import java.awt.event.KeyEvent;
 
-public class Player extends GameObject{
+public class Player extends GameObject {
 
     boolean rightPressed;
     boolean leftPressed;
@@ -23,12 +24,14 @@ public class Player extends GameObject{
 
 
     boolean spellDisabled;
-     final int COOL_DOWN_TIME = 5;
+    final int COOL_DOWN_TIME = 5;
 
+    public BoxCollider boxCollider;
 
     public Player() {
-        position.set(182,500);
+        position.set(182, 500);
         image = Utils.loadImage("assets/images/players/straight/0.png");
+        boxCollider = new BoxCollider(5,5);
     }
 
 
@@ -71,10 +74,13 @@ public class Player extends GameObject{
     public void run() {
         move();
         shoot();
+        boxCollider.position.set(this.position);
     }
+
     Vector2d velocity = new Vector2d();
+
     private void move() {
-        velocity.set(0,0);
+        velocity.set(0, 0);
         if (rightPressed) {
             velocity.x += SPEED;
         }
@@ -97,18 +103,18 @@ public class Player extends GameObject{
     int coolDownCount;
 
 
-    public void shoot(){
-        if ( spellDisabled){
+    public void shoot() {
+        if (spellDisabled) {
             coolDownCount++;
-            if (coolDownCount >= COOL_DOWN_TIME){
+            if (coolDownCount >= COOL_DOWN_TIME) {
                 spellDisabled = false;
                 coolDownCount = 0;
             }
             return;
         }
-        if (xPressed){
+        if (xPressed) {
             PlayerSpell newSpell = new PlayerSpell();
-            newSpell.position.set(this.position.subtract(0,image.getHeight()/2));
+            newSpell.position.set(this.position.subtract(0, image.getHeight() / 2));
             GameObject.add(newSpell);
             spellDisabled = true;
         }
@@ -123,5 +129,7 @@ public class Player extends GameObject{
         }
         return value;
     }
-
+    public void getHit(){
+        isActive = false;
+    }
 }

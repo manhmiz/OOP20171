@@ -29,7 +29,7 @@ public class BoxCollider {
         return position.y + height / 2;
     }
 
-    public boolean collieWidth(BoxCollider other) {
+    public boolean collieWith(BoxCollider other) {
         boolean xOverlap = other.right() >= this.left() && other.left() <= this.right();
         boolean yOverlap = other.bottom() >= this.top() && other.top() <= this.bottom();
         return xOverlap && yOverlap;
