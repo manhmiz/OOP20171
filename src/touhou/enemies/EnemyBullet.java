@@ -24,7 +24,7 @@ public class EnemyBullet extends GameObject {
     public void run() {
         position.addUP(0, SPEED);
         boxCollider.position.set(this.position);
-        Player player = GameObject.collideWith2(this.boxCollider);
+        Player player = GameObject.collideWith(this.boxCollider, Player.class);
         if (player != null){
          player.getHit();
          this.isActive = false;

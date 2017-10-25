@@ -3,9 +3,10 @@ package touhou.enemies;
 import bases.GameObject;
 import bases.Utils;
 import bases.physics.BoxCollider;
+import bases.physics.PhysicsBody;
 import touhou.enemies.EnemyBullet;
 
-public class Enemy extends GameObject {
+public class Enemy extends GameObject implements PhysicsBody {
 
     public BoxCollider boxCollider;
 
@@ -16,26 +17,30 @@ public class Enemy extends GameObject {
     final int COOL_DOWN_TIME = 30;
     int coolDownTime;
 
+    PlayerDamge playerDamge = new PlayerDamge();
+
     public Enemy() {
-        boxCollider = new BoxCollider(30,30);
+        boxCollider = new BoxCollider(30, 30);
         this.image = Utils.loadImage("assets/images/enemies/level0/blue/0.png");
+        this.playerDamge = new PlayerDamge();
     }
 
 
     public void run() {
-        position.addUP(0, SPEED);
         boxCollider.position.set(this.position);
         shoot();
-//        move();
+        move();
+        this.playerDamge.run(this);
     }
 
 
-//        public void move(){
-//        if (position.y != yTurn ) {
-//            position.y += SPEED;
-//        }else position.x += SPEED;
-//
-//    }
+    public void move() {
+        if (position.y != yTurn) {
+            position.addUP(0, SPEED);
+        } else position.addUP(SPEED, 0);
+
+    }
+
     private void shoot() {
         if (bulletDisabled) {
             coolDownTime++;
@@ -55,5 +60,10 @@ public class Enemy extends GameObject {
 
     public void getHit() {
         isActive = false;
+    }
+
+    @Override
+    public BoxCollider getBoxCollider() {
+        return boxCollider;
     }
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class EnemySpawner extends GameObject{
 
-    FrameCounter frameCounter = new FrameCounter(20);
+    FrameCounter frameCounter = new FrameCounter(30);
     Random random = new Random();
     @Override
     public void run(){

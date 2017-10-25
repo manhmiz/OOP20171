@@ -3,6 +3,7 @@ import touhou.enemies.Enemy;
 import touhou.enemies.EnemySpawner;
 import touhou.players.Player;
 import touhou.*;
+import touhou.players.PlayerCastSpell;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class GameCanvas extends JPanel {
 
     BackGround backGround = new BackGround();
     Player player = new Player();
+    PlayerCastSpell playerCastSpell = new PlayerCastSpell();
 
 
 
@@ -41,16 +43,6 @@ public class GameCanvas extends JPanel {
         g.drawImage(backBuffer, 0, 0, null);
     }
 
-    public void keyPressed(KeyEvent e) {
-        player.keyPressed(e);
-
-
-    }
-
-    public void keyReleased(KeyEvent e) {
-        player.keyReleased(e);
-
-    }
 
     public void run() {
         GameObject.runAll();
