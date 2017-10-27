@@ -38,7 +38,13 @@ public class Enemy extends GameObject implements PhysicsBody {
         if (position.y != yTurn) {
             position.addUP(0, SPEED);
         } else position.addUP(SPEED, 0);
+        deactiveIfNeeded();
+    }
 
+    private void deactiveIfNeeded() {
+        if (position.x > 384){
+            this.isActive = false;
+        }
     }
 
     private void shoot() {
@@ -50,12 +56,9 @@ public class Enemy extends GameObject implements PhysicsBody {
             }
             return;
         }
-        EnemyBullet newBullet = new EnemyBullet();
+        EnemyBullet newBullet = GameObject.recycle(EnemyBullet.class);
         newBullet.position.set(position);
-        GameObject.add(newBullet);
         bulletDisabled = true;
-
-
     }
 
     public void getHit() {

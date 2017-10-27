@@ -3,6 +3,7 @@ package touhou.enemies;
 import bases.GameObject;
 import bases.physics.BoxCollider;
 import touhou.players.Player;
+import touhou.players.Sphere;
 
 public class PlayerDamge {
     public void run(Enemy owner){

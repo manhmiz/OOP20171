@@ -13,18 +13,16 @@ import java.awt.event.KeyEvent;
 public class Player extends GameObject implements PhysicsBody {
 
 
-    final int SPEED = 5;
-    final int LEFT = 0;
-    final int RIGHT = 384;
-    final int TOP = 0;
-    final int BOTTOM = 550;
-
+     public final int SPEED = 5;
+     public final int LEFT = 0;
+     public  int RIGHT = 384;
+     public  int TOP = 0;
+     public  int BOTTOM = 550;
 
 
     public BoxCollider boxCollider;
 
     PlayerCastSpell castSpell = new PlayerCastSpell();
-
 
     public Player() {
         position.set(182, 500);

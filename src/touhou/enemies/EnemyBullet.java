@@ -29,6 +29,11 @@ public class EnemyBullet extends GameObject {
          player.getHit();
          this.isActive = false;
         }
+        deactiveIfNeeded();
     }
-
+    private void deactiveIfNeeded() {
+        if (position.y > 600){
+            this.isActive = false;
+        }
+    }
 }

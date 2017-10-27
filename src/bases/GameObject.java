@@ -2,6 +2,7 @@ package bases;
 
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import com.sun.glass.ui.Size;
 import sun.nio.cs.ext.DoubleByte;
 import touhou.enemies.Enemy;
 import touhou.players.Player;
@@ -21,12 +22,14 @@ public class GameObject {
 
     public static void runAll() {
         for (GameObject gameObject : gameObjects) {
+
             if (gameObject.isActive)
                 gameObject.run();
         }
 
         gameObjects.addAll(newgameObjects);
         newgameObjects.clear();
+        System.out.println(gameObjects.size());
     }
 
     public static void renderAll(Graphics graphics) {
@@ -60,29 +63,6 @@ public class GameObject {
         }
     }
 
-    //    public static Enemy collideWith(BoxCollider boxCollider) {
-//        for (GameObject gameObject : gameObjects) {
-//            if (gameObject.isActive && gameObject instanceof Enemy) {
-//                Enemy enemy = (Enemy) gameObject;
-//                if (enemy.boxCollider.collieWith(boxCollider)) {
-//                    return enemy;
-//                }
-//            }
-//        }
-//
-//        return null;
-//    }
-//    public static Player collideWith2(BoxCollider boxCollider){
-//        for (GameObject gameObject : gameObjects){
-//            if (gameObject.isActive && gameObject instanceof Player){
-//                Player player = (Player) gameObject;
-//                if (player.boxCollider.collieWith(boxCollider)){
-//                    return player;
-//                }
-//            }
-//        }
-//        return null;
-//    }
     public static <T extends PhysicsBody> T collideWith(BoxCollider boxCollider, Class<T> cls) {
         for (GameObject gameObject : gameObjects) {
             if (!gameObject.isActive) continue;

@@ -18,9 +18,8 @@ public class EnemySpawner extends GameObject{
     }
 
     private void spawm() {
-        Enemy enemy = new Enemy();
+        Enemy enemy = GameObject.recycle(Enemy.class);
         enemy.position.y = 10;
         enemy.position.x = random.nextInt(384);
-        GameObject.add(enemy);
     }
 }

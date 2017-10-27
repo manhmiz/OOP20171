@@ -4,6 +4,8 @@ import touhou.enemies.EnemySpawner;
 import touhou.players.Player;
 import touhou.*;
 import touhou.players.PlayerCastSpell;
+import touhou.players.Sphere;
+import touhou.players.Sphere2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +20,7 @@ public class GameCanvas extends JPanel {
     BackGround backGround = new BackGround();
     Player player = new Player();
     PlayerCastSpell playerCastSpell = new PlayerCastSpell();
+    EnemySpawner enemySpawner =new EnemySpawner();
 
 
 
@@ -26,7 +29,9 @@ public class GameCanvas extends JPanel {
         backBuffer = new BufferedImage(384, 600, BufferedImage.TYPE_INT_ARGB);
         backGraphics = backBuffer.getGraphics();
         GameObject.add(player);
-        GameObject.add(new EnemySpawner());
+        GameObject.add(enemySpawner);
+        GameObject.add(new Sphere());
+        GameObject.add(new Sphere2());
     }
 
     public void render() {
