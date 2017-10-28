@@ -56,7 +56,7 @@ public class Sphere2 extends GameObject{
         }
         return value;
     }
-    public void getHit(){
-        isActive = false;
-    }
+//    public void getHit(){
+//        isActive = false;
+//    }
 }

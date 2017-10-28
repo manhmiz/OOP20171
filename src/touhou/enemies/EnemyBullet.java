@@ -8,11 +8,11 @@ import touhou.players.Player;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class EnemyBullet extends GameObject {
 
     final int SPEED = 3;
-
     public BoxCollider boxCollider;
 
     public EnemyBullet() {
@@ -22,6 +22,7 @@ public class EnemyBullet extends GameObject {
     }
 
     public void run() {
+
         position.addUP(0, SPEED);
         boxCollider.position.set(this.position);
         Player player = GameObject.collideWith(this.boxCollider, Player.class);

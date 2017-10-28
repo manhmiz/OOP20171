@@ -10,6 +10,7 @@ import touhou.players.PlayerSpell;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 import java.util.Vector;
 
 public class GameObject {
@@ -22,14 +23,12 @@ public class GameObject {
 
     public static void runAll() {
         for (GameObject gameObject : gameObjects) {
-
             if (gameObject.isActive)
                 gameObject.run();
         }
-
         gameObjects.addAll(newgameObjects);
         newgameObjects.clear();
-        System.out.println(gameObjects.size());
+//        System.out.println(gameObjects.size());
     }
 
     public static void renderAll(Graphics graphics) {
@@ -82,6 +81,7 @@ public class GameObject {
     }
 
     public void run() {
+
     }
 
     public void render(Graphics graphics) {
