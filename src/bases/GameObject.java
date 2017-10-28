@@ -15,7 +15,7 @@ import java.util.Vector;
 
 public class GameObject {
     public Vector2d position;
-    public BufferedImage image;
+    public Renderer renderer;
     public boolean isActive;
 
     static Vector<GameObject> gameObjects = new Vector<>();
@@ -28,13 +28,22 @@ public class GameObject {
         }
         gameObjects.addAll(newgameObjects);
         newgameObjects.clear();
-//        System.out.println(gameObjects.size());
+        System.out.println(gameObjects.size());
+    }
+    public void reset(){
+        isActive = true;
     }
 
     public static void renderAll(Graphics graphics) {
         for (GameObject gameObject : gameObjects) {
             if (gameObject.isActive)
                 gameObject.render(graphics);
+        }
+    }
+
+    public void render(Graphics graphics) {
+        if (renderer != null) {
+            renderer.render(graphics, position);
         }
     }
 
@@ -47,7 +56,7 @@ public class GameObject {
         for (GameObject gameObject : gameObjects) {
             if (gameObject.getClass().equals(cls)) {
                 if (!gameObject.isActive) {
-                    (gameObject).isActive = true;
+                    gameObject.reset();
                     return (T) gameObject;
                 }
             }
@@ -84,13 +93,5 @@ public class GameObject {
 
     }
 
-    public void render(Graphics graphics) {
-        if (image != null) {
-            graphics.drawImage(image,
-                    (int) (position.x - image.getWidth() / 2),
-                    (int) (position.y - image.getHeight() / 2),
-                    null);
-        }
-    }
 
 }

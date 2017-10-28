@@ -1,14 +1,9 @@
 package touhou.enemies;
 
 import bases.GameObject;
-import bases.Utils;
+import bases.ImageRenderer;
 import bases.physics.BoxCollider;
 import touhou.players.Player;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Random;
 
 public class EnemyBullet extends GameObject {
 
@@ -17,7 +12,8 @@ public class EnemyBullet extends GameObject {
 
     public EnemyBullet() {
 
-        image = Utils.loadImage("assets/images/enemies/bullets/blue.png");
+//        image = Utils.loadImage("assets/images/enemies/bullets/blue.png");
+        this.renderer = new ImageRenderer("assets/images/enemies/bullets/blue.png");
         boxCollider = new BoxCollider(10,10);
     }
 

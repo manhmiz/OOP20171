@@ -1,12 +1,13 @@
 package touhou.players;
 
+import bases.Animation;
 import bases.GameObject;
+import bases.ImageRenderer;
 import bases.Utils;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import touhou.enemies.Enemy;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class PlayerSpell extends GameObject implements PhysicsBody{
@@ -15,9 +16,15 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
     public BoxCollider boxCollider;
 
 
-    public PlayerSpell()
-    {
-        image = Utils.loadImage("assets/images/player-bullets/a/1.png");
+    public PlayerSpell() {
+        BufferedImage[] images = new  BufferedImage[]{
+                Utils.loadImage("assets/images/player-bullets/a/0.png"),
+                Utils.loadImage("assets/images/player-bullets/a/1.png"),
+                Utils.loadImage("assets/images/player-bullets/a/2.png"),
+                Utils.loadImage("assets/images/player-bullets/a/3.png"),
+        };
+//        image = Utils.loadImage("assets/images/player-bullets/a/1.png");
+        this.renderer = new Animation(images);//ImageRenderer("assets/images/player-bullets/a/1.png");
         boxCollider = new BoxCollider(20,20);
 
     }

@@ -1,10 +1,13 @@
 package touhou.enemies;
 
+import bases.Animation;
 import bases.GameObject;
+import bases.ImageRenderer;
 import bases.Utils;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
-import touhou.enemies.EnemyBullet;
+
+import java.awt.image.BufferedImage;
 
 public class Enemy extends GameObject implements PhysicsBody {
 
@@ -21,8 +24,10 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     public Enemy() {
         boxCollider = new BoxCollider(30, 30);
-        this.image = Utils.loadImage("assets/images/enemies/level0/blue/0.png");
-        this.playerDamge = new PlayerDamge();
+        this.renderer = new Animation( Utils.loadImage("assets/images/enemies/level0/blue/0.png"),
+                Utils.loadImage("assets/images/enemies/level0/blue/1.png"),
+                Utils.loadImage("assets/images/enemies/level0/blue/2.png"),
+                Utils.loadImage("assets/images/enemies/level0/blue/3.png"));
     }
 
 
@@ -63,6 +68,12 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     public void getHit() {
         isActive = false;
+        explose();
+    }
+
+    private void explose() {
+        EnemyExplosion explosion = GameObject.recycle(EnemyExplosion.class);
+        explosion.position.set(this.position);
     }
 
     @Override

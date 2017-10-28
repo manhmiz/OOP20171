@@ -1,14 +1,13 @@
 package touhou.players;
 
 import bases.GameObject;
-import bases.Utils;
+import bases.ImageRenderer;
 import bases.Vector2d;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import touhou.inputs.InputManager;
-import touhou.players.PlayerSpell;
 
-import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 public class Player extends GameObject implements PhysicsBody {
 
@@ -26,7 +25,8 @@ public class Player extends GameObject implements PhysicsBody {
 
     public Player() {
         position.set(182, 500);
-        image = Utils.loadImage("assets/images/players/straight/0.png");
+        //image = Utils.loadImage("assets/images/players/straight/0.png");
+        this.renderer = new ImageRenderer("assets/images/players/straight/0.png");
         boxCollider = new BoxCollider(5, 5);
         this.castSpell = new PlayerCastSpell();
     }
@@ -77,6 +77,14 @@ public class Player extends GameObject implements PhysicsBody {
 
     public void getHit() {
         isActive = false;
+        explode();
+    }
+
+    private void explode() {
+        //1.Play explosion sound
+
+        //2.Add explosion
+
     }
 
     @Override

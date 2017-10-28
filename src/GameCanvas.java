@@ -4,8 +4,8 @@ import touhou.enemies.EnemySpawner;
 import touhou.players.Player;
 import touhou.*;
 import touhou.players.PlayerCastSpell;
-import touhou.players.Sphere;
-import touhou.players.Sphere2;
+//import touhou.players.Sphere;
+//import touhou.players.Sphere2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,8 +30,8 @@ public class GameCanvas extends JPanel {
         backGraphics = backBuffer.getGraphics();
         GameObject.add(player);
         GameObject.add(enemySpawner);
-        GameObject.add(new Sphere());
-        GameObject.add(new Sphere2());
+//        GameObject.add(new Sphere());
+//        GameObject.add(new Sphere2());
     }
 
     public void render() {

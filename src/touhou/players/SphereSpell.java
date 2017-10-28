@@ -10,7 +10,7 @@ public class SphereSpell extends GameObject implements PhysicsBody{
     final int SPEED = 10;
     BoxCollider boxCollider;
     public SphereSpell(){
-        image = Utils.loadImage("assets/images/sphere-bullets/1.png");
+//        image = Utils.loadImage("assets/images/sphere-bullets/1.png");
         boxCollider = new BoxCollider(20,20);
     }
     public void run(){

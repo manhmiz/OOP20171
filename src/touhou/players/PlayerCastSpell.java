@@ -26,7 +26,7 @@ public class PlayerCastSpell {
 
         if (InputManager.instance.jPressed) {
             PlayerSpell newSpell = GameObject.recycle(PlayerSpell.class);
-            newSpell.position.set(owner.position.subtract(0, owner.image.getHeight() / 2));
+            newSpell.position.set(owner.position.subtract(0, 40 / 2));
             spellDisabled = true;
         }
 
