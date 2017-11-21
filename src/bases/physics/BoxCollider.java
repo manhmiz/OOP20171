@@ -1,7 +1,5 @@
 package bases.physics;
 
-import bases.Vector2d;
-
 public class BoxCollider {
     public Vector2d position;
     public float width;

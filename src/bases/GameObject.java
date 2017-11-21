@@ -2,15 +2,10 @@ package bases;
 
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
-import com.sun.glass.ui.Size;
-import sun.nio.cs.ext.DoubleByte;
-import touhou.enemies.Enemy;
-import touhou.players.Player;
-import touhou.players.PlayerSpell;
+import bases.physics.Vector2d;
+import bases.renderers.Renderer;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.Random;
 import java.util.Vector;
 
 public class GameObject {

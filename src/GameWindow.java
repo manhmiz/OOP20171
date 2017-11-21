@@ -1,7 +1,6 @@
-import touhou.inputs.InputManager;
+import bases.inputs.InputManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -13,7 +12,7 @@ public class GameWindow extends JFrame {
     long lastTimeUpdate;
 
     public GameWindow() {
-        this.setSize(384, 600);
+        this.setSize(768, 768);
         this.canvas = new GameCanvas();
         this.setContentPane(this.canvas);
         this.addWindowListener(new WindowListener() {
