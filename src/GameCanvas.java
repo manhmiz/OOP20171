@@ -19,14 +19,14 @@ public class GameCanvas extends JPanel {
 
     public GameCanvas() {
         //1. Create back buffer
-        backBuffer = new BufferedImage(768, 768, BufferedImage.TYPE_INT_ARGB);
+        backBuffer = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
         backGraphics = backBuffer.getGraphics();
 
     }
 
     public void render() {
         //1.Draw everything on back buffer
-//        backGround.render(backGraphics);
+        backGround.render(backGraphics);
         GameObject.renderAll(backGraphics);
 
         //2. Call repaint

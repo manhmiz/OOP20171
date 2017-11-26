@@ -13,7 +13,7 @@ public class GameWindow extends JFrame {
     long lastTimeUpdate;
 
     public GameWindow() {
-        this.setSize(608, 608);
+        this.setSize(614, 636);
         this.canvas = new GameCanvas();
         this.setContentPane(this.canvas);
         this.addWindowListener(new WindowListener() {
@@ -76,6 +76,10 @@ public class GameWindow extends JFrame {
         this.setVisible(true);
         lastTimeUpdate = System.nanoTime();
     }
+    public void addMap(){
+        Map map = Map.load("assets/maps/mapTanks.json");
+        map.generate();
+    }
 
     public void gameLoop() {
         while (true) {
@@ -87,11 +91,8 @@ public class GameWindow extends JFrame {
                 lastTimeUpdate = currentTime;
 
             }
-
+            addMap();
         }
     }
-    public void addMap(){
-        Map map = Map.load("assets/maps/mapTanks.json");
-        map.generate();
-    }
+
 }

@@ -19,8 +19,8 @@ public class ImageRenderer implements Renderer {
     public void render(Graphics graphics, Vector2d position) {
         if (image != null) {
             graphics.drawImage(image,
-                    (int) (position.x - image.getWidth() / 2),
-                    (int) (position.y - image.getHeight() / 2),
+                    (int) (position.x ),
+                    (int) (position.y),
                     null);
         }
     }
