@@ -26,7 +26,7 @@ public class GameCanvas extends JPanel {
 
     public void render() {
         //1.Draw everything on back buffer
-        backGround.render(backGraphics);
+//        backGround.render(backGraphics);
         GameObject.renderAll(backGraphics);
 
         //2. Call repaint

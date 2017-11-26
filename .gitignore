@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+OOP20171.iml
+assets/images/enemies/
+assets/images/player-bullets/
+assets/images/players/
+assets/images/scenes/
+out/

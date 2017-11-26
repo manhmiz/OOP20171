@@ -23,7 +23,6 @@ public class GameObject {
         }
         gameObjects.addAll(newgameObjects);
         newgameObjects.clear();
-        System.out.println(gameObjects.size());
     }
     public void reset(){
         isActive = true;

@@ -1,4 +1,5 @@
 import bases.inputs.InputManager;
+import maps.Map;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -12,7 +13,7 @@ public class GameWindow extends JFrame {
     long lastTimeUpdate;
 
     public GameWindow() {
-        this.setSize(768, 768);
+        this.setSize(608, 608);
         this.canvas = new GameCanvas();
         this.setContentPane(this.canvas);
         this.addWindowListener(new WindowListener() {
@@ -88,5 +89,9 @@ public class GameWindow extends JFrame {
             }
 
         }
+    }
+    public void addMap(){
+        Map map = Map.load("assets/maps/mapTanks.json");
+        map.generate();
     }
 }
