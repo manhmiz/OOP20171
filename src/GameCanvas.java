@@ -1,5 +1,6 @@
 import bases.GameObject;
 import game.BackGround;
+import game.players.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,12 +16,13 @@ public class GameCanvas extends JPanel {
 
     BackGround backGround = new BackGround();
 
-
+    Player player = new Player();
 
     public GameCanvas() {
         //1. Create back buffer
         backBuffer = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
         backGraphics = backBuffer.getGraphics();
+        GameObject.add(player);
 
     }
 
@@ -28,7 +30,6 @@ public class GameCanvas extends JPanel {
         //1.Draw everything on back buffer
         backGround.render(backGraphics);
         GameObject.renderAll(backGraphics);
-
         //2. Call repaint
         repaint();
     }

@@ -82,6 +82,8 @@ public class GameWindow extends JFrame {
     }
 
     public void gameLoop() {
+        addMap();
+
         while (true) {
 
             long currentTime = System.nanoTime();
@@ -91,7 +93,6 @@ public class GameWindow extends JFrame {
                 lastTimeUpdate = currentTime;
 
             }
-            addMap();
         }
     }
 
