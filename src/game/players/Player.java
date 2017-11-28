@@ -14,12 +14,14 @@ public class Player extends GameObject implements PhysicsBody{
     float SPEED = 2;
 
     PlayerAnimator animator;
+    PlayerCastSpell castSpell;
     public Player(){
         position.set(500,500);
 
         animator = new PlayerAnimator();
-
         this.renderer = animator;
+
+        this.castSpell = new PlayerCastSpell();
     }
 
     @Override
@@ -27,7 +29,10 @@ public class Player extends GameObject implements PhysicsBody{
         move();
         boxCollider.position.set(this.position);
         animator.run(this);
+        this.castSpell.run(this);
     }
+
+
     Vector2d velocity = new Vector2d();
 
     private void move() {
@@ -55,6 +60,6 @@ public class Player extends GameObject implements PhysicsBody{
 
     @Override
     public BoxCollider getBoxCollider() {
-        return null;
+        return boxCollider;
     }
 }

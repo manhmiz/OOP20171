@@ -8,6 +8,7 @@ import bases.renderers.ImageRenderer;
 public class Brick extends GameObject implements PhysicsBody{
     BoxCollider boxCollider = new BoxCollider(19,19);
     public Brick(){
+        super();
         this.renderer = new ImageRenderer("assets/images/platforms/brick.png");
         this.boxCollider.position.set(this.position);
     }

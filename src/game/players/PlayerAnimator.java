@@ -8,11 +8,11 @@ import bases.renderers.Renderer;
 import java.awt.*;
 
 public class PlayerAnimator implements Renderer{
-    Animation leftAnimation;
-    Animation rightAnimation;
-    Animation upAnimation;
-    Animation downAnimation;
-    Animation currentAnimation;
+    public Animation leftAnimation;
+    public Animation rightAnimation;
+    public Animation upAnimation;
+    public Animation downAnimation;
+    public Animation currentAnimation;
 
     public PlayerAnimator()
     {
@@ -24,10 +24,11 @@ public class PlayerAnimator implements Renderer{
      currentAnimation = upAnimation;
     }
     public void run(Player player){
+
         //Get player's velocity
         Vector2d velocity = player.velocity;
         //Based on velocity change animation
-        if (velocity.x < 0){
+        if (velocity.x < 0) {
             currentAnimation = leftAnimation;
         }
         else if (velocity.x > 0){
