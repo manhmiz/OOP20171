@@ -19,7 +19,7 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     Vector2d velocity;
 
-    public int direction;
+    protected static int direction;
 
     protected static final int LEFT = 0;
     protected static final int RIGHT = 1;
@@ -40,7 +40,7 @@ public class Enemy extends GameObject implements PhysicsBody {
 
         boxCollider.position.set(this.position.subtract(10, 10));
 
-        animator.run();
+        animator.run(this);
 
         move();
         moveVertical();
@@ -115,6 +115,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                         || GameObject.collideWith(this.boxCollider.shift(0, shiftDistance), Rock.class) != null
                         || GameObject.collideWith(this.boxCollider.shift(0, shiftDistance), Water.class) != null) {
                     moveContinue = false;
+                    changeDirection();
                 } else {
                     shiftDistance += Math.signum(velocity.y);
                     this.position.addUP(0, Math.signum(velocity.y));
@@ -139,6 +140,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                         || GameObject.collideWith(this.boxCollider.shift(shiftDistance, 0), Rock.class) != null
                         || GameObject.collideWith(this.boxCollider.shift(shiftDistance, 0), Water.class) != null) {
                     moveContinue = false;
+                    changeDirection();
                 } else {
                     shiftDistance += Math.signum(velocity.x);
                     this.position.addUP(Math.signum(velocity.x), 0);

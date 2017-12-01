@@ -25,7 +25,21 @@ public class EnemyAnimator implements Renderer {
         currentAnimation = downAnimation;
     }
 
-    public void run() {
+    public void run(Enemy enemy) {
+        switch (Enemy.direction) {
+            case 0:
+                currentAnimation = leftAnimation;
+                break;
+            case 1:
+                currentAnimation = rightAnimation;
+                break;
+            case 2:
+                currentAnimation = upAnimation;
+                break;
+            case 3:
+                currentAnimation = downAnimation;
+                break;
+        }
     }
 
     @Override
