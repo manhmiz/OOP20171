@@ -1,16 +1,24 @@
 package bases.physics;
 
-public class BoxCollider {
-    public Vector2d position;
-    public float width;
-    public float height;
+import bases.GameObject;
 
-    public BoxCollider(float width, float height){
-        position = new Vector2d();
+public class BoxCollider extends GameObject{
+    private float width;
+    private float height;
+
+    public BoxCollider(float x, float y, float width, float height){
+        super();
+        this.position.set(x, y);
         this.width = width;
         this.height = height;
     }
+    public BoxCollider(float width, float height) { this(0,0,width,height);}
 
+    public BoxCollider shift(float dx, float dy){
+        BoxCollider shiftedBoxCollider = new BoxCollider(this.width,this.height);
+        shiftedBoxCollider.position.set(this.position.add(dx,dy));
+        return shiftedBoxCollider;
+    }
     public float left() {
         return position.x - width / 2;
     }

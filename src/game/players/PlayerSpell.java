@@ -2,52 +2,75 @@ package game.players;
 
 import bases.GameObject;
 import bases.Utils;
+import bases.inputs.InputManager;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import bases.physics.Vector2d;
 import bases.renderers.Animation;
 import bases.renderers.ImageRenderer;
 import game.platforms.Brick;
+import game.platforms.Rock;
 
 import java.awt.image.BufferedImage;
 
-public class PlayerSpell extends GameObject implements PhysicsBody{
+public class PlayerSpell extends GameObject implements PhysicsBody {
     BoxCollider boxCollider;
-    PlayerAnimator animator;
-    final int SPEED = 4;
-    public PlayerSpell(){
-        boxCollider = new BoxCollider(5,5);
+    Vector2d velocity;
+
+    final int SPEED = 5;
+
+    public PlayerSpell() {
+        boxCollider = new BoxCollider(8, 8);
         BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/player-bullets/bullet.png")};
         this.renderer = new Animation(images);
+        velocity = new Vector2d();
+        InputManager inputManager = InputManager.instance;
+        switch (inputManager.BULLET_MOVE) {
+            case 1:
+                this.velocity.x = -SPEED;
+                this.velocity.y = 0;
+                break;
+            case 2:
+                this.velocity.x = SPEED;
+                this.velocity.y = 0;
+                break;
+            case 3:
+                this.velocity.y = -SPEED;
+                this.velocity.x = 0;
+                break;
+            case 4:
+                this.velocity.y = SPEED;
+                this.velocity.x = 0;
+                break;
+
+        }
 
     }
-    public void run(){
-        boxCollider.position.set(this.position);
 
-//        Brick brick = GameObject.collideWith(boxCollider, Brick.class);
-//        if (brick != null){
-//            this.isActive = false;
-//        }
-        animator = new PlayerAnimator();
-        if (animator.equals(animator.leftAnimation)){
-            this.position.subtractBy(this.SPEED,0);
-            System.out.println("ban trai");
+    public void run() {
+        boxCollider.position.set(this.position.subtract(10,10));
+        if (position.x < 0 || position.x > 600 || position.y < 0 || position.y > 600) {
+            this.isActive = false;
         }
-        else if (animator.equals(animator.rightAnimation)){
-            this.position.addUP(this.SPEED,0);
-            System.out.println("ban phai");
+
+        this.position.addUP(this.velocity);
+
+        Brick brick = GameObject.collideWith(boxCollider, Brick.class);
+        if (brick != null) {
+            brick.getHit();
+            this.isActive = false;
         }
-        else if (animator.equals(animator.upAnimation)){
-            this.position.subtractBy(0,this.SPEED);
-            System.out.println("ban len");
+        Rock rock = GameObject.collideWith(boxCollider, Rock.class);
+        if (rock != null) {
+            this.isActive = false;
         }
-        else if (animator.equals(animator.downAnimation)) {
-            this.position.addUP(0, this.SPEED);
-            System.out.println("ban xuong");
-        }
+
+
     }
+
     @Override
     public BoxCollider getBoxCollider() {
-
         return this.boxCollider;
+//        return null;
     }
 }

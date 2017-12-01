@@ -10,11 +10,21 @@ public class Brick extends GameObject implements PhysicsBody{
     public Brick(){
         super();
         this.renderer = new ImageRenderer("assets/images/platforms/brick.png");
+    }
+
+    @Override
+    public void run() {
+        super.run();
         this.boxCollider.position.set(this.position);
+    }
+
+    public void getHit() {
+            this.isActive = false;
     }
 
     @Override
     public BoxCollider getBoxCollider() {
-        return null;
+        return this.boxCollider;
+//        return null;
     }
 }
