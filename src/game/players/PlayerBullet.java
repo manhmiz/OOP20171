@@ -8,42 +8,24 @@ import bases.physics.PhysicsBody;
 import bases.physics.Vector2d;
 import bases.renderers.Animation;
 import bases.renderers.ImageRenderer;
+import game.enemies.Enemy;
 import game.platforms.Brick;
 import game.platforms.Rock;
 
 import java.awt.image.BufferedImage;
 
-public class PlayerSpell extends GameObject implements PhysicsBody {
+public class PlayerBullet extends GameObject implements PhysicsBody {
     BoxCollider boxCollider;
     Vector2d velocity;
 
     final int SPEED = 5;
 
-    public PlayerSpell() {
+    public PlayerBullet() {
         boxCollider = new BoxCollider(8, 8);
         BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/player-bullets/bullet.png")};
         this.renderer = new Animation(images);
         velocity = new Vector2d();
-        InputManager inputManager = InputManager.instance;
-        switch (inputManager.BULLET_MOVE) {
-            case 1:
-                this.velocity.x = -SPEED;
-                this.velocity.y = 0;
-                break;
-            case 2:
-                this.velocity.x = SPEED;
-                this.velocity.y = 0;
-                break;
-            case 3:
-                this.velocity.y = -SPEED;
-                this.velocity.x = 0;
-                break;
-            case 4:
-                this.velocity.y = SPEED;
-                this.velocity.x = 0;
-                break;
 
-        }
 
     }
 
@@ -64,8 +46,11 @@ public class PlayerSpell extends GameObject implements PhysicsBody {
         if (rock != null) {
             this.isActive = false;
         }
-
-
+        Enemy enemy = GameObject.collideWith(boxCollider, Enemy.class);
+        if (enemy != null){
+            enemy.getHit();
+            this.isActive = false;
+        }
     }
 
     @Override

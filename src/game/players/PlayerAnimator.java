@@ -23,7 +23,7 @@ public class PlayerAnimator implements Renderer{
 
      currentAnimation = upAnimation;
     }
-    public void run(Player player){
+    public void run(){
 
         InputManager inputManager = InputManager.instance;
         switch (inputManager.BULLET_MOVE) {

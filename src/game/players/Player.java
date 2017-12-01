@@ -5,12 +5,9 @@ import bases.inputs.InputManager;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.Vector2d;
-import bases.renderers.ImageRenderer;
-import com.sun.javafx.scene.traversal.Direction;
 import game.platforms.Brick;
 import game.platforms.Rock;
 import game.platforms.Water;
-import maps.Map;
 
 public class Player extends GameObject implements PhysicsBody {
 
@@ -19,7 +16,7 @@ public class Player extends GameObject implements PhysicsBody {
     float SPEED = 2;
 
     PlayerAnimator animator;
-    PlayerCastSpell castSpell;
+    PlayerCastBullet castSpell;
 
     Vector2d velocity;
 
@@ -29,7 +26,7 @@ public class Player extends GameObject implements PhysicsBody {
         animator = new PlayerAnimator();
         this.renderer = animator;
 
-        this.castSpell = new PlayerCastSpell();
+        this.castSpell = new PlayerCastBullet();
     }
 
     @Override
@@ -37,7 +34,7 @@ public class Player extends GameObject implements PhysicsBody {
 
         boxCollider.position.set(this.position.subtract(10,10));
 
-        animator.run(this);
+        animator.run();
 
         this.castSpell.run(this);
         move();
@@ -123,5 +120,9 @@ public class Player extends GameObject implements PhysicsBody {
     @Override
     public BoxCollider getBoxCollider() {
         return boxCollider;
+    }
+
+    public void getHit() {
+        this.isActive = false;
     }
 }

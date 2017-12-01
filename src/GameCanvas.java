@@ -1,5 +1,6 @@
 import bases.GameObject;
 import game.BackGround;
+import game.enemies.Enemy;
 import game.players.Player;
 
 import javax.swing.*;
@@ -18,11 +19,14 @@ public class GameCanvas extends JPanel {
 
     Player player = new Player();
 
+    Enemy enemy = new Enemy();
+
     public GameCanvas() {
         //1. Create back buffer
         backBuffer = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
         backGraphics = backBuffer.getGraphics();
         GameObject.add(player);
+        GameObject.add(enemy);
 
     }
 
