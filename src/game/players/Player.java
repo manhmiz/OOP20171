@@ -32,7 +32,7 @@ public class Player extends GameObject implements PhysicsBody {
     @Override
     public void run() {
 
-        boxCollider.position.set(this.position.subtract(10,10));
+        boxCollider.position.set(this.position.subtract(10, 10));
 
         animator.run();
 
@@ -69,22 +69,22 @@ public class Player extends GameObject implements PhysicsBody {
 
     private void moveVertical() {
 
-        BoxCollider nextBoxCollider = this.boxCollider.shift(0,velocity.y);
+        BoxCollider nextBoxCollider = this.boxCollider.shift(0, velocity.y);
 
-        Brick brick = GameObject.collideWith(nextBoxCollider,Brick.class);
-        Rock rock = GameObject.collideWith(nextBoxCollider,Rock.class);
-        Water water = GameObject.collideWith(nextBoxCollider,Water.class);
-        if (brick != null || rock !=null || water != null){
+        Brick brick = GameObject.collideWith(nextBoxCollider, Brick.class);
+        Rock rock = GameObject.collideWith(nextBoxCollider, Rock.class);
+        Water water = GameObject.collideWith(nextBoxCollider, Water.class);
+        if (brick != null || rock != null || water != null) {
             boolean moveContinue = true;
             float shiftDistance = Math.signum(velocity.y);
-            while (moveContinue){
-                if (GameObject.collideWith(this.boxCollider.shift(0,shiftDistance),Brick.class) != null
-                        || GameObject.collideWith(this.boxCollider.shift(0,shiftDistance),Rock.class) != null
-                        || GameObject.collideWith(this.boxCollider.shift(0,shiftDistance),Water.class) != null){
+            while (moveContinue) {
+                if (GameObject.collideWith(this.boxCollider.shift(0, shiftDistance), Brick.class) != null
+                        || GameObject.collideWith(this.boxCollider.shift(0, shiftDistance), Rock.class) != null
+                        || GameObject.collideWith(this.boxCollider.shift(0, shiftDistance), Water.class) != null) {
                     moveContinue = false;
-                }else {
-                    shiftDistance +=Math.signum(velocity.y);
-                    this.position.addUP(0,Math.signum(velocity.y));
+                } else {
+                    shiftDistance += Math.signum(velocity.y);
+                    this.position.addUP(0, Math.signum(velocity.y));
                 }
 
             }
@@ -93,22 +93,22 @@ public class Player extends GameObject implements PhysicsBody {
     }
 
     private void moveHorizontal() {
-        BoxCollider nextBoxCollider = this.boxCollider.shift(velocity.x,0);
+        BoxCollider nextBoxCollider = this.boxCollider.shift(velocity.x, 0);
 
-        Brick brick = GameObject.collideWith(nextBoxCollider,Brick.class);
-        Rock rock = GameObject.collideWith(nextBoxCollider,Rock.class);
-        Water water = GameObject.collideWith(nextBoxCollider,Water.class);
-        if (brick != null || rock !=null || water != null){
+        Brick brick = GameObject.collideWith(nextBoxCollider, Brick.class);
+        Rock rock = GameObject.collideWith(nextBoxCollider, Rock.class);
+        Water water = GameObject.collideWith(nextBoxCollider, Water.class);
+        if (brick != null || rock != null || water != null) {
             boolean moveContinue = true;
             float shiftDistance = Math.signum(velocity.x);
-            while (moveContinue){
-                if (GameObject.collideWith(this.boxCollider.shift(shiftDistance,0),Brick.class) != null
-                        || GameObject.collideWith(this.boxCollider.shift(shiftDistance,0),Rock.class) != null
-                        || GameObject.collideWith(this.boxCollider.shift(shiftDistance,0),Water.class) != null){
+            while (moveContinue) {
+                if (GameObject.collideWith(this.boxCollider.shift(shiftDistance, 0), Brick.class) != null
+                        || GameObject.collideWith(this.boxCollider.shift(shiftDistance, 0), Rock.class) != null
+                        || GameObject.collideWith(this.boxCollider.shift(shiftDistance, 0), Water.class) != null) {
                     moveContinue = false;
-                }else {
+                } else {
                     shiftDistance += Math.signum(velocity.x);
-                    this.position.addUP(Math.signum(velocity.x),0);
+                    this.position.addUP(Math.signum(velocity.x), 0);
                 }
 
             }

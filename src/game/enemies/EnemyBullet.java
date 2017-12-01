@@ -28,7 +28,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody {
     }
 
     public void run() {
-        boxCollider.position.set(this.position.subtract(10,10));
+        boxCollider.position.set(this.position.subtract(10, 10));
         if (position.x < 0 || position.x > 600 || position.y < 0 || position.y > 600) {
             this.isActive = false;
         }
@@ -44,8 +44,8 @@ public class EnemyBullet extends GameObject implements PhysicsBody {
         if (rock != null) {
             this.isActive = false;
         }
-        Player player = GameObject.collideWith(boxCollider,Player.class);
-        if (player != null){
+        Player player = GameObject.collideWith(boxCollider, Player.class);
+        if (player != null) {
             player.getHit();
             this.isActive = false;
         }
