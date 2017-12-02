@@ -14,7 +14,7 @@ import java.util.Random;
 public class Enemy extends GameObject implements PhysicsBody {
     BoxCollider boxCollider = new BoxCollider(32, 32);
 
-    float SPEED = 2;
+    float SPEED = 1;
     EnemyAnimator animator;
 
     Vector2d velocity;
@@ -26,6 +26,8 @@ public class Enemy extends GameObject implements PhysicsBody {
     protected static final int UP = 2;
     protected static final int DOWN = 3;
 
+    EnemyCastBullet castBullet;
+
     public Enemy() {
         this.position.set(400, 550);
         velocity = new Vector2d();
@@ -33,6 +35,7 @@ public class Enemy extends GameObject implements PhysicsBody {
         animator = new EnemyAnimator();
         this.renderer = animator;
         this.direction = LEFT;
+        this.castBullet = new EnemyCastBullet();
     }
 
     @Override
@@ -42,6 +45,7 @@ public class Enemy extends GameObject implements PhysicsBody {
 
         animator.run(this);
 
+        shoot();
         move();
         moveVertical();
         moveHorizontal();
@@ -51,6 +55,14 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     }
 
+    private void shoot() {
+        Random rd = new Random();
+        int rdInt = rd.nextInt(5000);
+        if (rdInt > 4950){
+            castBullet.run(this);
+        }
+    }
+
     private void move() {
         switch (direction) {
             case LEFT:
@@ -58,7 +70,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                 velocity.y = 0;
                 Random rd = new Random();
                 int rdInt = rd.nextInt(10000);
-                if (rdInt > 9800) {
+                if (rdInt > 9900) {
                     changeDirection();
                 }
                 break;
@@ -67,7 +79,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                 velocity.y = 0;
                 Random rd2 = new Random();
                 int rdInt2 = rd2.nextInt(10000);
-                if (rdInt2 > 9800) {
+                if (rdInt2 > 9900) {
                     changeDirection();
                 }
                 break;
@@ -76,7 +88,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                 velocity.x = 0;
                 Random rd3 = new Random();
                 int rdInt3 = rd3.nextInt(10000);
-                if (rdInt3 > 9800) {
+                if (rdInt3 > 9900) {
                     changeDirection();
                 }
                 break;
@@ -85,7 +97,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                 velocity.x = 0;
                 Random rd4 = new Random();
                 int rdInt4 = rd4.nextInt(10000);
-                if (rdInt4 > 9800) {
+                if (rdInt4 > 9900) {
                     changeDirection();
                 }
                 break;

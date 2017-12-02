@@ -76,19 +76,14 @@ public class GameWindow extends JFrame {
         this.setVisible(true);
         lastTimeUpdate = System.nanoTime();
     }
-    public void addMap(){
-        Map map = Map.load("assets/maps/mapTanks.json");
-        map.generate();
-    }
 
     public void gameLoop() {
-        addMap();
 
         while (true) {
 
             long currentTime = System.nanoTime();
             if (currentTime - lastTimeUpdate >= 17000000) {
-                canvas.run();
+                    canvas.run();
                 canvas.render();
                 lastTimeUpdate = currentTime;
 

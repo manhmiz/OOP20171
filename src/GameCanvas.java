@@ -2,6 +2,8 @@ import bases.GameObject;
 import game.BackGround;
 import game.enemies.Enemy;
 import game.players.Player;
+import game.scenes.ScenceLvl1;
+import maps.Map;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,16 +19,16 @@ public class GameCanvas extends JPanel {
 
     BackGround backGround = new BackGround();
 
-    Player player = new Player();
+    ScenceLvl1 scenceLvl1;
 
-    Enemy enemy = new Enemy();
 
     public GameCanvas() {
         //1. Create back buffer
         backBuffer = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
         backGraphics = backBuffer.getGraphics();
-        GameObject.add(player);
-        GameObject.add(enemy);
+
+        scenceLvl1 = new ScenceLvl1();
+        scenceLvl1.init();
 
     }
 

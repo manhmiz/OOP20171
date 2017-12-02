@@ -25,8 +25,6 @@ public class GameObject {
         gameObjects.addAll(newgameObjects);
         newgameObjects.clear();
         System.out.println(gameObjects.size());
-        Player player = new Player();
-        System.out.println(player.getBoxCollider().position);
     }
 
     public void reset(){
