@@ -5,9 +5,11 @@ import bases.inputs.InputManager;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.Vector2d;
+import bases.scenes.SceneManager;
 import game.platforms.Brick;
 import game.platforms.Rock;
 import game.platforms.Water;
+import game.scenes.GameOverScene;
 
 public class Player extends GameObject implements PhysicsBody {
 
@@ -20,8 +22,10 @@ public class Player extends GameObject implements PhysicsBody {
 
     Vector2d velocity;
 
+    float HP;
+
     public Player() {
-        this.position.set(500, 550);
+        this.position.set(310, 575);
         velocity = new Vector2d();
         animator = new PlayerAnimator();
         this.renderer = animator;
@@ -123,6 +127,6 @@ public class Player extends GameObject implements PhysicsBody {
     }
 
     public void getHit() {
-        this.isActive = false;
+        SceneManager.changeScene(new GameOverScene());
     }
 }

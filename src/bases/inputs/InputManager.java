@@ -11,7 +11,8 @@ public class InputManager {
     public boolean isUp;
     public boolean isDown;
     public boolean jPressed;
-
+    public boolean spacePressed;
+    public boolean kPressed;
 
     public static int BULLET_MOVE =3;
 //    public static int BULLET_MOVE ;
@@ -26,6 +27,12 @@ public class InputManager {
 
         if (e.getKeyCode() == KeyEvent.VK_J) {
             jPressed = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_K){
+            kPressed = true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            spacePressed = true;
         }
         int keyCode = e.getKeyCode();
         switch (keyCode) {
@@ -53,9 +60,13 @@ public class InputManager {
         if (e.getKeyCode() == KeyEvent.VK_J) {
             jPressed = false;
         }
-
+        if (e.getKeyCode() == KeyEvent.VK_K){
+            kPressed = false;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            spacePressed = false;
+        }
         int keyCode = e.getKeyCode();
-
 
         switch (keyCode) {
             case KeyEvent.VK_A:

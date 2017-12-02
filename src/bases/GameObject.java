@@ -24,7 +24,7 @@ public class GameObject {
         }
         gameObjects.addAll(newgameObjects);
         newgameObjects.clear();
-        System.out.println(gameObjects.size());
+//        System.out.println(gameObjects.size());
     }
 
     public void reset(){
@@ -91,4 +91,8 @@ public class GameObject {
     }
 
 
+    public static void clearAll() {
+        gameObjects.clear();
+        newgameObjects.clear();
+    }
 }

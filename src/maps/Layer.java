@@ -15,6 +15,7 @@ public class Layer {
             for (int titleX = 0; titleX < width; titleX ++){
                 int mapData = data.get(titleY*width + titleX);
                 switch (mapData){
+
                     case 4:
                         Brick brick = new Brick();
                         brick.position.set(titleX*19, titleY*19);

@@ -1,5 +1,4 @@
 import bases.inputs.InputManager;
-import maps.Map;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -83,7 +82,7 @@ public class GameWindow extends JFrame {
 
             long currentTime = System.nanoTime();
             if (currentTime - lastTimeUpdate >= 17000000) {
-                    canvas.run();
+                canvas.run();
                 canvas.render();
                 lastTimeUpdate = currentTime;
 

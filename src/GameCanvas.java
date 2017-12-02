@@ -1,9 +1,9 @@
 import bases.GameObject;
-import game.BackGround;
-import game.enemies.Enemy;
-import game.players.Player;
+import bases.inputs.InputManager;
+import bases.scenes.SceneManager;
+import game.scenes.GameOverScene;
+import game.scenes.GameStartScene;
 import game.scenes.ScenceLvl1;
-import maps.Map;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,9 +17,7 @@ public class GameCanvas extends JPanel {
     BufferedImage backBuffer;
     Graphics backGraphics;
 
-    BackGround backGround = new BackGround();
 
-    ScenceLvl1 scenceLvl1;
 
 
     public GameCanvas() {
@@ -27,14 +25,15 @@ public class GameCanvas extends JPanel {
         backBuffer = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
         backGraphics = backBuffer.getGraphics();
 
-        scenceLvl1 = new ScenceLvl1();
-        scenceLvl1.init();
+        SceneManager.changeScene(new GameStartScene());
 
     }
 
     public void render() {
         //1.Draw everything on back buffer
-        backGround.render(backGraphics);
+//        backGround.render(backGraphics);
+        backGraphics.setColor(Color.black);
+        backGraphics.fillRect(0,0,616,636);
         GameObject.renderAll(backGraphics);
         //2. Call repaint
         repaint();
@@ -48,7 +47,18 @@ public class GameCanvas extends JPanel {
 
     public void run() {
         GameObject.runAll();
-        backGround.run();
+
+        if (InputManager.instance.jPressed){
+            if (SceneManager.getCurrentScene().getClass().equals(GameStartScene.class)){
+                SceneManager.changeScene(new ScenceLvl1());
+            }
+        }
+        if (InputManager.instance.spacePressed){
+            if (SceneManager.getCurrentScene().getClass().equals(GameOverScene.class)){
+                SceneManager.changeScene(new GameStartScene());
+            }
+        }
+        SceneManager.changeSceneIfNeeded();
     }
 
 }

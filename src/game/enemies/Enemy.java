@@ -5,9 +5,11 @@ import bases.inputs.InputManager;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.Vector2d;
+import bases.scenes.SceneManager;
 import game.platforms.Brick;
 import game.platforms.Rock;
 import game.platforms.Water;
+import game.scenes.SceneLvl2;
 
 import java.util.Random;
 
@@ -19,23 +21,20 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     Vector2d velocity;
 
-    protected static int direction;
+    protected int direction;
 
     protected static final int LEFT = 0;
     protected static final int RIGHT = 1;
     protected static final int UP = 2;
     protected static final int DOWN = 3;
 
-    EnemyCastBullet castBullet;
 
     public Enemy() {
-        this.position.set(400, 550);
         velocity = new Vector2d();
 
         animator = new EnemyAnimator();
         this.renderer = animator;
-        this.direction = LEFT;
-        this.castBullet = new EnemyCastBullet();
+        this.direction = DOWN;
     }
 
     @Override
@@ -43,8 +42,7 @@ public class Enemy extends GameObject implements PhysicsBody {
 
         boxCollider.position.set(this.position.subtract(10, 10));
 
-        animator.run(this);
-
+        changeStatus();
         shoot();
         move();
         moveVertical();
@@ -55,18 +53,56 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     }
 
+    private void changeStatus() {
+        switch (direction){
+            case 0:
+                animator.currentAnimation = animator.leftAnimation;
+                break;
+            case 1:
+                animator.currentAnimation = animator.rightAnimation;
+                break;
+            case 2:
+                animator.currentAnimation = animator.upAnimation;
+                break;
+            case 3:
+                animator.currentAnimation = animator.downAnimation;
+                break;
+        }
+    }
+
     private void shoot() {
         Random rd = new Random();
         int rdInt = rd.nextInt(5000);
-        if (rdInt > 4950){
-            castBullet.run(this);
+        if (rdInt > 4950) {
+            switch (direction){
+                case 0:
+                    LeftBullet leftBullet = GameObject.recycle(LeftBullet.class);
+                    leftBullet.position.set(this.position.subtract(16,0));
+//                    bulletDisabled = true;
+                    break;
+                case 1:
+                    RightBullet rightBullet = GameObject.recycle(RightBullet.class);
+                    rightBullet.position.set(this.position.add(16,0));
+//                    bulletDisabled = true;
+                    break;
+                case 2:
+                    UpBullet upBullet = GameObject.recycle(UpBullet.class);
+                    upBullet.position.set(this.position.subtract(0,16));
+//                    bulletDisabled = true;
+                    break;
+                case 3:
+                    DownBullet downBullet = GameObject.recycle(DownBullet.class);
+                    downBullet.position.set(this.position.add(0,16));
+//                    bulletDisabled = true;
+                    break;
+            }
         }
     }
 
     private void move() {
         switch (direction) {
             case LEFT:
-                velocity.x =- SPEED;
+                velocity.x = -SPEED;
                 velocity.y = 0;
                 Random rd = new Random();
                 int rdInt = rd.nextInt(10000);
@@ -84,7 +120,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                 }
                 break;
             case UP:
-                velocity.y =- SPEED;
+                velocity.y = -SPEED;
                 velocity.x = 0;
                 Random rd3 = new Random();
                 int rdInt3 = rd3.nextInt(10000);
@@ -170,5 +206,6 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     public void getHit() {
         this.isActive = false;
+//        SceneManager.changeScene(new SceneLvl2());
     }
 }
