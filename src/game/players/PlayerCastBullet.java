@@ -5,7 +5,7 @@ import bases.inputs.InputManager;
 
 public class PlayerCastBullet {
     boolean bulletDisabled;
-    final int COOL_DOWN_TIME = 40;
+    public int COOL_DOWN_TIME;
     int coolDownCount;
     public void run(Player owner){
         if (bulletDisabled){

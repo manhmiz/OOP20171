@@ -1,9 +1,13 @@
 import bases.GameObject;
 import bases.inputs.InputManager;
+import bases.scenes.Scene;
 import bases.scenes.SceneManager;
 import game.scenes.GameOverScene;
 import game.scenes.GameStartScene;
-import game.scenes.ScenceLvl1;
+import game.scenes.GameWinScene;
+import game.scenes.scenelvl1.SceneLvl1;
+import game.scenes.scenelvl1.SceneLvl1Black;
+import game.scenes.scenelvl1.SceneLvl1Blue;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,11 +54,21 @@ public class GameCanvas extends JPanel {
 
         if (InputManager.instance.jPressed){
             if (SceneManager.getCurrentScene().getClass().equals(GameStartScene.class)){
-                SceneManager.changeScene(new ScenceLvl1());
+                SceneManager.changeScene(new SceneLvl1Black());
+            }
+        }
+        if (InputManager.instance.kPressed) {
+            if (SceneManager.getCurrentScene().getClass().equals(GameStartScene.class)) {
+                SceneManager.changeScene(new SceneLvl1Blue());
             }
         }
         if (InputManager.instance.spacePressed){
             if (SceneManager.getCurrentScene().getClass().equals(GameOverScene.class)){
+                SceneManager.changeScene(new GameStartScene());
+            }
+        }
+        if (InputManager.instance.xPressed){
+            if (SceneManager.getCurrentScene().getClass().equals(GameWinScene.class)){
                 SceneManager.changeScene(new GameStartScene());
             }
         }

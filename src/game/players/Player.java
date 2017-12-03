@@ -13,24 +13,21 @@ import game.scenes.GameOverScene;
 
 public class Player extends GameObject implements PhysicsBody {
 
-    BoxCollider boxCollider = new BoxCollider(32, 32);
+    public BoxCollider boxCollider = new BoxCollider(32, 32);
 
-    float SPEED = 2;
+    public float SPEED = 2;
 
-    PlayerAnimator animator;
-    PlayerCastBullet castSpell;
 
-    Vector2d velocity;
+    public Vector2d velocity;
 
-    float HP;
+    public float HP;
 
     public Player() {
-        this.position.set(310, 575);
-        velocity = new Vector2d();
-        animator = new PlayerAnimator();
-        this.renderer = animator;
 
-        this.castSpell = new PlayerCastBullet();
+        this.position.set(310, 570);
+
+        velocity = new Vector2d();
+
     }
 
     @Override
@@ -38,18 +35,17 @@ public class Player extends GameObject implements PhysicsBody {
 
         boxCollider.position.set(this.position.subtract(10, 10));
 
-        animator.run();
-
-        this.castSpell.run(this);
         move();
         moveVertical();
         moveHorizontal();
 
         position.addUP(velocity);
+
     }
 
 
     private void move() {
+
         velocity.set(0, 0);
         InputManager inputManager = InputManager.instance;
         if (inputManager.isRight) {
@@ -127,6 +123,9 @@ public class Player extends GameObject implements PhysicsBody {
     }
 
     public void getHit() {
-        SceneManager.changeScene(new GameOverScene());
+        HP -=5;
+        if (HP == 0){
+            SceneManager.changeScene(new GameOverScene());
+        }
     }
 }

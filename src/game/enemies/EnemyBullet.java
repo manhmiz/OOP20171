@@ -8,7 +8,8 @@ import bases.physics.Vector2d;
 import bases.renderers.Animation;
 import game.platforms.Brick;
 import game.platforms.Rock;
-import game.players.Player;
+import game.players.playerblack.PlayerBlack;
+import game.players.playerblue.PlayerBlue;
 
 import java.awt.image.BufferedImage;
 
@@ -20,7 +21,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody {
 
     public EnemyBullet() {
         boxCollider = new BoxCollider(8, 8);
-        BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/player-bullets/bullet.png")};
+        BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/enemies/bullets/bullet.png")};
         this.renderer = new Animation(images);
         velocity = new Vector2d();
 
@@ -44,9 +45,15 @@ public class EnemyBullet extends GameObject implements PhysicsBody {
         if (rock != null) {
             this.isActive = false;
         }
-        Player player = GameObject.collideWith(boxCollider, Player.class);
-        if (player != null) {
-            player.getHit();
+
+        PlayerBlue blue = GameObject.collideWith(boxCollider,PlayerBlue.class);
+        if (blue != null){
+            blue.getHit();
+            this.isActive = false;
+        }
+        PlayerBlack black = GameObject.collideWith(boxCollider,PlayerBlack.class);
+        if (black != null){
+            black.getHit();
             this.isActive = false;
         }
     }
@@ -54,6 +61,5 @@ public class EnemyBullet extends GameObject implements PhysicsBody {
     @Override
     public BoxCollider getBoxCollider() {
         return this.boxCollider;
-//        return null;
     }
 }

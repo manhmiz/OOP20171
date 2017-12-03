@@ -15,8 +15,12 @@ public class Layer {
             for (int titleX = 0; titleX < width; titleX ++){
                 int mapData = data.get(titleY*width + titleX);
                 switch (mapData){
-
-                    case 4:
+                    case 1:
+                        Rock rock = new Rock();
+                        rock.position.set(titleX*19, titleY*19);
+                        GameObject.add(rock);
+                        break;
+                    case 2:
                         Brick brick = new Brick();
                         brick.position.set(titleX*19, titleY*19);
                         GameObject.add(brick);
@@ -26,15 +30,10 @@ public class Layer {
                         tree.position.set(titleX*19, titleY*19);
                         GameObject.add(tree);
                         break;
-                    case 2:
+                    case 4:
                         Water water = new Water();
                         water.position.set(titleX*19, titleY*19);
                         GameObject.add(water);
-                        break;
-                    case 1:
-                        Rock rock = new Rock();
-                        rock.position.set(titleX*19, titleY*19);
-                        GameObject.add(rock);
                         break;
                 }
             }

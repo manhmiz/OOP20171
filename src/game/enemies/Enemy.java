@@ -1,15 +1,12 @@
 package game.enemies;
 
 import bases.GameObject;
-import bases.inputs.InputManager;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.Vector2d;
-import bases.scenes.SceneManager;
 import game.platforms.Brick;
 import game.platforms.Rock;
 import game.platforms.Water;
-import game.scenes.SceneLvl2;
 
 import java.util.Random;
 
@@ -206,6 +203,6 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     public void getHit() {
         this.isActive = false;
-//        SceneManager.changeScene(new SceneLvl2());
+//        SceneManager.changeScene(new scenelvl2());
     }
 }

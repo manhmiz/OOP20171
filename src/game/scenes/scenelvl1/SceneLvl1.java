@@ -1,16 +1,14 @@
-package game.scenes;
+package game.scenes.scenelvl1;
 
 import bases.GameObject;
 import bases.scenes.Scene;
-import bases.scenes.SceneManager;
+import game.enemies.bosslvl1.BossLvl1Blue;
 import game.enemies.Enemy;
-import game.players.Player;
 import maps.Map;
 
-public class ScenceLvl1 implements Scene{
+public class SceneLvl1 implements Scene{
 
-    Player player = new Player();
-    int CountEnemy = 9;
+
     @Override
     public void deinit() {
         GameObject.clearAll();
@@ -19,7 +17,6 @@ public class ScenceLvl1 implements Scene{
     @Override
     public void init() {
 
-        GameObject.add(player);
         addEnemy();
         addMap();
 
@@ -33,8 +30,6 @@ public class ScenceLvl1 implements Scene{
 
     private void addEnemy() {
 
-        Enemy enemy = GameObject.recycle(Enemy.class);
-        enemy.position.set(300,80);
 
         Enemy enemy0 = GameObject.recycle(Enemy.class);
         enemy0.position.set(100,150);

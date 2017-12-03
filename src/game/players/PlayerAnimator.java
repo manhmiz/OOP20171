@@ -16,14 +16,7 @@ public class PlayerAnimator implements Renderer {
     public Animation currentAnimation;
 
     public PlayerAnimator() {
-        leftAnimation = new Animation(Utils.loadImage("assets/images/players/player_green_left.png"));
-        rightAnimation = new Animation(Utils.loadImage("assets/images/players/player_green_right.png"));
-        upAnimation = new Animation(Utils.loadImage("assets/images/players/player_green_up.png"));
-        downAnimation = new Animation(Utils.loadImage("assets/images/players/player_green_down.png"));
-//        downAnimation = new Animation(Utils.loadImage("assets/images/players/tank_bigRed.png"));
 
-
-        currentAnimation = upAnimation;
     }
 
     public void run() {
