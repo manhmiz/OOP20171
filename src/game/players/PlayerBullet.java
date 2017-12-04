@@ -24,7 +24,7 @@ public class PlayerBullet extends GameObject implements PhysicsBody {
 
     public PlayerBullet() {
         boxCollider = new BoxCollider(8, 8);
-        BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/player-bullets/bullet.png")};
+        BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/player-bullet/bullet.png")};
         this.renderer = new Animation(images);
         velocity = new Vector2d();
 

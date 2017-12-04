@@ -26,5 +26,6 @@ public class SceneLvl2 implements Scene{
     private void addEnemy() {
         Enemy enemy = GameObject.recycle(Enemy.class);
         enemy.position.set(300,80);
+
     }
 }
