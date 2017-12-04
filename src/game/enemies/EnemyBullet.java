@@ -21,7 +21,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody {
 
     public EnemyBullet() {
         boxCollider = new BoxCollider(8, 8);
-        BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/enemy/bullets/bullet.png")};
+        BufferedImage[] images = new BufferedImage[]{Utils.loadImage("assets/images/enemies/bullets/bullet.png")};
         this.renderer = new Animation(images);
         velocity = new Vector2d();
 
