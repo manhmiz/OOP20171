@@ -10,7 +10,6 @@ public class BossLvl1Blue extends Enemy {
     @Override
     public void getHit() {
         super.getHit();
-//        SceneManager.changeScene(new SceneLvl2Blue());
-        GameObject.clearAll();
+        SceneManager.changeScene(new SceneLvl2Blue());
     }
 }
