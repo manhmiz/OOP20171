@@ -94,6 +94,7 @@ public class Vector2d {
     public float length(){
         return (float)Math.sqrt(x*x + y*y);
     }
+
     public Vector2d normalie(){
         float length = length();
         return new Vector2d(this.x / length, this.y / length);

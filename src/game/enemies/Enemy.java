@@ -14,6 +14,7 @@ public class Enemy extends GameObject implements PhysicsBody {
     BoxCollider boxCollider = new BoxCollider(32, 32);
 
     float SPEED = 1;
+    int HP;
     EnemyAnimator animator;
 
     Vector2d velocity;
@@ -195,14 +196,19 @@ public class Enemy extends GameObject implements PhysicsBody {
             velocity.x = 0;
         }
     }
-
+    public void setHP(int HP){
+        this.HP = HP;
+    }
     @Override
     public BoxCollider getBoxCollider() {
         return this.boxCollider;
     }
 
     public void getHit() {
-        this.isActive = false;
+        HP -= 5;
+        if (HP == 0){
+            this.isActive = false;
+        }
 //        SceneManager.changeScene(new scenelvl2());
     }
 }
