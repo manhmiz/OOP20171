@@ -6,10 +6,13 @@ import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.Vector2d;
 import bases.scenes.SceneManager;
+import game.finish.FinishLvl1;
 import game.platforms.Brick;
+import game.finish.Finish;
 import game.platforms.Rock;
 import game.platforms.Water;
 import game.scenes.GameOverScene;
+import game.scenes.scenelvl2.SceneLvl2;
 
 public class Player extends GameObject implements PhysicsBody {
 
@@ -24,7 +27,7 @@ public class Player extends GameObject implements PhysicsBody {
 
     public Player() {
 
-        this.position.set(310, 570);
+        this.position.set(19*16, 19*30);
 
         velocity = new Vector2d();
 

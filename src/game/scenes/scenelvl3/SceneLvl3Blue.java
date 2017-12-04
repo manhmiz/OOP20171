@@ -1,9 +1,10 @@
-package game.scenes.scenelvl2;
+package game.scenes.scenelvl3;
 
 import bases.GameObject;
 import game.players.playerblue.PlayerBlue;
 
-public class SceneLvl2Blue extends SceneLvl2{
+public class SceneLvl3Blue extends SceneLvl3{
+
     PlayerBlue player = new PlayerBlue();
     @Override
     public void init() {
