@@ -9,7 +9,7 @@ public class Brick extends GameObject implements PhysicsBody{
     BoxCollider boxCollider = new BoxCollider(19,19);
     public Brick(){
         super();
-        this.renderer = new ImageRenderer("assets/images/platforms/brick.png");
+        this.renderer = new ImageRenderer("assets/images/platforms/brick2.png");
     }
 
     @Override

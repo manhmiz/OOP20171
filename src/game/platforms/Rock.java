@@ -8,7 +8,7 @@ import bases.renderers.ImageRenderer;
 public class Rock extends GameObject implements PhysicsBody{
     BoxCollider boxCollider;
     public Rock(){
-        this.renderer = new ImageRenderer("assets/images/platforms/rock.png");
+        this.renderer = new ImageRenderer("assets/images/platforms/rock2.png");
         boxCollider = new BoxCollider(19,19);
     }
 

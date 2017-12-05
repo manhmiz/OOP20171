@@ -127,7 +127,7 @@ public class Player extends GameObject implements PhysicsBody {
 
     public void getHit() {
         HP -=5;
-        if (HP == 0){
+        if (HP <= 0){
             SceneManager.changeScene(new GameOverScene());
         }
     }
