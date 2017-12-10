@@ -8,10 +8,10 @@ public class BlueAnimator extends PlayerAnimator{
 
     public BlueAnimator(){
 
-        leftAnimation = new Animation(Utils.loadImage("assets/images/player/player_blue_left.png"));
-        rightAnimation = new Animation(Utils.loadImage("assets/images/player/player_blue_right.png"));
-        upAnimation = new Animation(Utils.loadImage("assets/images/player/player_blue_up.png"));
-        downAnimation = new Animation(Utils.loadImage("assets/images/player/player_blue_down.png"));
+        leftAnimation = new Animation(Utils.loadImage("assets/images/player/blue_left.png"));
+        rightAnimation = new Animation(Utils.loadImage("assets/images/player/blue_right.png"));
+        upAnimation = new Animation(Utils.loadImage("assets/images/player/blue_up.png"));
+        downAnimation = new Animation(Utils.loadImage("assets/images/player/blue_down.png"));
 
         currentAnimation = upAnimation;
     }

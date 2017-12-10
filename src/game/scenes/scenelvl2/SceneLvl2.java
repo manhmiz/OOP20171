@@ -23,6 +23,7 @@ public class SceneLvl2 implements Scene {
 
         addEnemy();
         addFinish();
+
         Map map = Map.load("assets/maps/mapLvl2.json");
         map.generate();
     }

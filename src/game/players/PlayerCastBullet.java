@@ -20,22 +20,22 @@ public class PlayerCastBullet {
             switch (InputManager.BULLET_MOVE){
                 case 1:
                     LeftBullet leftBullet = GameObject.recycle(LeftBullet.class);
-                    leftBullet.position.set(owner.position.subtract(16,0));
+                    leftBullet.position.set(owner.position.subtract(16,7));
                     bulletDisabled = true;
                     break;
                 case 2:
                     RightBullet rightBullet = GameObject.recycle(RightBullet.class);
-                    rightBullet.position.set(owner.position.add(16,0));
+                    rightBullet.position.set(owner.position.add(16,7));
                     bulletDisabled = true;
                     break;
                 case 3:
                     UpBullet upBullet = GameObject.recycle(UpBullet.class);
-                    upBullet.position.set(owner.position.subtract(0,16));
+                    upBullet.position.set(owner.position.subtract(-7,16));
                     bulletDisabled = true;
                     break;
                 case 4:
                     DownBullet downBullet = GameObject.recycle(DownBullet.class);
-                    downBullet.position.set(owner.position.add(0,16));
+                    downBullet.position.set(owner.position.add(-7,16));
                     bulletDisabled = true;
                     break;
             }

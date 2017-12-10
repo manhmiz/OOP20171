@@ -6,13 +6,10 @@ import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.physics.Vector2d;
 import bases.scenes.SceneManager;
-import game.finish.FinishLvl1;
 import game.platforms.Brick;
-import game.finish.Finish;
 import game.platforms.Rock;
 import game.platforms.Water;
 import game.scenes.GameOverScene;
-import game.scenes.scenelvl2.SceneLvl2;
 
 public class Player extends GameObject implements PhysicsBody {
 
@@ -20,14 +17,13 @@ public class Player extends GameObject implements PhysicsBody {
 
     public float SPEED = 2;
 
-
     public Vector2d velocity;
 
     public float HP;
 
     public Player() {
 
-        this.position.set(19*16, 19*30);
+        this.position.set(19 * 16, 19 * 30);
 
         velocity = new Vector2d();
 
@@ -37,7 +33,7 @@ public class Player extends GameObject implements PhysicsBody {
     public void run() {
 
         boxCollider.position.set(this.position.subtract(10, 10));
-
+        System.out.println(HP);
         move();
         moveVertical();
         moveHorizontal();
@@ -126,8 +122,8 @@ public class Player extends GameObject implements PhysicsBody {
     }
 
     public void getHit() {
-        HP -=5;
-        if (HP <= 0){
+        HP -= 5;
+        if (HP <= 0) {
             SceneManager.changeScene(new GameOverScene());
         }
     }

@@ -17,10 +17,10 @@ public class EnemyAnimator implements Renderer {
     public Animation currentAnimation;
 
     public EnemyAnimator() {
-        leftAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/enemy_left.png"));
-        rightAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/enemy_right.png"));
-        upAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/enemy_up.png"));
-        downAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/enemy_down.png"));
+        leftAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/zombie_left.png"));
+        rightAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/zombie_right.png"));
+        upAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/zombie_up.png"));
+        downAnimation = new Animation(Utils.loadImage("assets/images/enemies/level0/zombie_down.png"));
 
         currentAnimation = downAnimation;
     }

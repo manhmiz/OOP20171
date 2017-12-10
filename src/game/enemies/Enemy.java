@@ -75,22 +75,22 @@ public class Enemy extends GameObject implements PhysicsBody {
             switch (direction){
                 case 0:
                     LeftBullet leftBullet = GameObject.recycle(LeftBullet.class);
-                    leftBullet.position.set(this.position.subtract(16,0));
+                    leftBullet.position.set(this.position.subtract(16,7));
 //                    bulletDisabled = true;
                     break;
                 case 1:
                     RightBullet rightBullet = GameObject.recycle(RightBullet.class);
-                    rightBullet.position.set(this.position.add(16,0));
+                    rightBullet.position.set(this.position.add(16,7));
 //                    bulletDisabled = true;
                     break;
                 case 2:
                     UpBullet upBullet = GameObject.recycle(UpBullet.class);
-                    upBullet.position.set(this.position.subtract(0,16));
+                    upBullet.position.set(this.position.subtract(-7,16));
 //                    bulletDisabled = true;
                     break;
                 case 3:
                     DownBullet downBullet = GameObject.recycle(DownBullet.class);
-                    downBullet.position.set(this.position.add(0,16));
+                    downBullet.position.set(this.position.add(-7,16));
 //                    bulletDisabled = true;
                     break;
             }
@@ -205,10 +205,9 @@ public class Enemy extends GameObject implements PhysicsBody {
     }
 
     public void getHit() {
-        HP -= 5;
-        if (HP == 0){
+        this.HP -= 5;
+        if (this.HP == 0){
             this.isActive = false;
         }
-//        SceneManager.changeScene(new scenelvl2());
     }
 }
